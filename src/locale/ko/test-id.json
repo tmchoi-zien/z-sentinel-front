@@ -1,18 +1,10 @@
 {
   "modal": {
-    "infra-detail": {
-      "test-name": "modal-infra-detail",
-      "tb-infra-name": "modal-infra-detail-tb-infra-name",
-      "tb-hostname": "modal-infra-detail-tb-hostname",
-      "tb-ip": "modal-infra-detail-tb-ip",
-      "tb-category": "modal-infra-detail-tb-category",
-      "tb-target-type": "modal-infra-detail-tb-target-type",
-      "tb-asset-manager": "modal-infra-detail-tb-asset-manager",
-      "tb-infra-manager": "modal-infra-detail-tb-infra-manager",
-      "tb-purpose": "modal-infra-detail-tb-purpose",
-      "tb-mac": "modal-infra-detail-tb-mac",
-      "table-inspection": "modal-infra-detail-table-insepction",
-      "table-vuln": "modal-infra-detail-table-vuln"
+    "security-alert-detail": {
+      "test-name": "modal-security-alert-detail"
+    },
+    "vulnerability-detail": {
+      "test-name": "modal-vulnerability-detail"
     }
   },
   "icon": {
@@ -20,8 +12,7 @@
     "target": "icon-target",
     "trash": "icon-trash"
   },
-  "pages": {
-  },
+  "pages": {},
   "component": {
     "tab": "component-tab",
     "file-upload": "component-file-upload",
