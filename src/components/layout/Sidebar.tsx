@@ -1,10 +1,9 @@
 "use client";
 import { useContext, useEffect, useState } from "react";
 
-import { MENUS, MenusType, ROLE } from "@/constants/menu";
-
-import MenuItem from "./MenuItem";
+import { MENUS, MenusType } from "@/constants/menu";
 import { GlobalContext } from "@/contexts/GlobalContext";
+import MenuItem from "./MenuItem";
 
 /**
  * todo: 하위항목 펼치기/접기 애니메이션 추가할 것
@@ -19,9 +18,7 @@ export default function Sidebar() {
   }, [info]);
 
   const filterMenus = () => {
-    return !!info.role
-      ? MENUS.filter((menu) => menu.permission.includes(info.role as ROLE))
-      : MENUS;
+    return MENUS;
   };
 
   return (

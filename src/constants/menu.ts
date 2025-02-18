@@ -39,7 +39,7 @@ export const MENUS: MenusType[] = [
   },
   {
     title: "Vulnerabilities",
-    pathname: "/vulnerabilitiese",
+    pathname: "/vulnerabilities",
     description: "취약점",
     linkable: true,
   },
