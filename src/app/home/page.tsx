@@ -1,5 +1,12 @@
 "use client";
 
+import DragableButton from "@/components/commons/DragableButton";
+
 export default function Home() {
-  return <>HOME</>;
+  return (
+    <>
+      <div>HOME</div>
+      <DragableButton />
+    </>
+  );
 }

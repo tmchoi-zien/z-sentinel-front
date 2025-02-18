@@ -4,6 +4,8 @@ import { useContext, useEffect, useState } from "react";
 import { MENUS, MenusType } from "@/constants/menu";
 import { GlobalContext } from "@/contexts/GlobalContext";
 import MenuItem from "./MenuItem";
+import Button from "../commons/Button";
+import useModal from "../modals/useModal";
 
 /**
  * todo: 하위항목 펼치기/접기 애니메이션 추가할 것
@@ -12,6 +14,8 @@ import MenuItem from "./MenuItem";
 export default function Sidebar() {
   const { info } = useContext(GlobalContext);
   const [menus, setMenus] = useState<MenusType[]>();
+
+  const { openVulnerabilityDetail, openSecurityAlertDetail } = useModal();
 
   useEffect(() => {
     setMenus(filterMenus());
@@ -33,6 +37,30 @@ export default function Sidebar() {
             menus.map((menu, idx) => {
               return <MenuItem menu={menu} key={idx} />;
             })}
+          <ul className="flex flex-col gap-5 mt-10">
+            <li>
+              <Button
+                color="white"
+                size="m"
+                text="modal - vulnerability detail"
+                type="button"
+                onClick={() =>
+                  openVulnerabilityDetail({ index: 0, onClose: () => {} })
+                }
+              />
+            </li>
+            <li>
+              <Button
+                color="white"
+                size="m"
+                text="modal - vulnerability detail"
+                type="button"
+                onClick={() =>
+                  openSecurityAlertDetail({ index: 0, onClose: () => {} })
+                }
+              />
+            </li>
+          </ul>
         </div>
       </div>
     </div>
