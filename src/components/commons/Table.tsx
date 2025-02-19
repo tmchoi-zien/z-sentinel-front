@@ -29,7 +29,7 @@ export default function Table<T extends MRT_RowData>({
   const [sorting, setSorting] = useState<MRT_SortingState>([]);
   const [pagination, setPagination] = useState<MRT_PaginationState>({
     pageIndex: 0,
-    pageSize: 3,
+    pageSize: 10,
   });
 
   const { data, isLoading, isError, isRefetching } = useQuery(
