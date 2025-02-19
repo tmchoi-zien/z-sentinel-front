@@ -1,6 +1,20 @@
 {
   "home": {},
-  "devices": {},
+  "devices": {
+    "title": "Devices",
+    "table-columns": ["#", "IP", "Manufacturer", "Model", "Type", "Status"]
+  },
   "security-alerts": {},
-  "vulnerabilities": {}
+  "vulnerabilities": {
+    "title": "Vulnerabilities",
+    "table-columns": [
+      "#",
+      "IP",
+      "Type",
+      "Vulnerable Target",
+      "위험도",
+      "CVSS",
+      "Description"
+    ]
+  }
 }

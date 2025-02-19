@@ -1,8 +1,9 @@
 import axios from "axios";
+import { AuthAxios } from "./AuthAxios";
 
 /**
  * File 업로드 예시
-**/
+ **/
 
 // export async function upload(formData: FormData) {
 //   const response = await axios.post(
@@ -18,10 +19,9 @@ import axios from "axios";
 //   return response.data;
 // }
 
-
 /**
  * File 다운로드 예시
-**/
+ **/
 
 // export async function downloadTool(serverType: string) {
 //   return axios.get(`${URL}/api/download`, {
@@ -37,3 +37,12 @@ import axios from "axios";
 //   const response = await axios.get(`${URL}/api/get`);
 //   return response.data;
 // }
+
+const instance = AuthAxios();
+
+export async function getAssetLIst(queryString: string) {
+  const response = await instance.get(
+    `http://192.168.2.134:8001/api/external/inspection/list?${queryString}`,
+  );
+  return response.data;
+}

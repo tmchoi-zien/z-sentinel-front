@@ -6,6 +6,9 @@ import {
   flexRender,
   Row,
   Cell,
+  getFilteredRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
 } from "@tanstack/react-table";
 import { downloadCSV, exportCSV } from "@/utils/CSVParser";
 import * as t from "@/locale/ko/test-id.json";
@@ -20,6 +23,7 @@ export type TableProps<T> = {
   noDataMessage?: string;
   showExport?: boolean;
   showSearch?: boolean;
+  showFilter?: boolean;
   search?: string;
   setSearch?: (search: string) => void;
   setSearchType?: (search: string) => void;
@@ -33,6 +37,7 @@ export default function Table<T>({
   noDataMessage = "데이터가 없습니다.",
   showExport = false,
   showSearch = false,
+  showFilter = false,
   page,
   setPage,
   totalPages,
@@ -42,6 +47,12 @@ export default function Table<T>({
   setSearchType2,
   customSize = false,
 }: TableProps<T>) {
+  const [filters, setFilters] = useState<any>({});
+
+  const handleFilterChange = (columnId: string, value: string) => {
+    const updatedFilters = { ...filters, [columnId]: value };
+  };
+
   const handlePageChange = (page: number) => {
     setPage && setPage(page);
   };
@@ -56,6 +67,8 @@ export default function Table<T>({
     data: rows,
     columns,
     getCoreRowModel: getCoreRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getFacetedUniqueValues: getFacetedUniqueValues(),
   });
 
   const { getHeaderGroups, getRowModel } = table;
@@ -69,6 +82,27 @@ export default function Table<T>({
 
   return (
     <div data-testid={[t.component["table"]]} className="w-full">
+      {/* Filter 기능 */}
+      {/* {showFilter && (
+        <div className="mb-4">
+        {columns.map((column) => (
+          column.get
+          column.getFilterValue ? (
+            <div key={column.id} className="inline-block mr-4">
+              <label className="block text-sm text-gray-600">{column.Header}</label>
+              <input
+                type="text"
+                value={filters[column.id] || ""}
+                onChange={(e) => handleFilterChange(column.id, e.target.value)}
+                placeholder={`Filter ${column.Header}`}
+                className="border rounded px-2 py-1 mt-1"
+              />
+            </div>
+          ) : null
+        ))}
+      </div>
+      )} */}
+
       {/* Export 기능 */}
       {showExport && (
         <div data-testid="export" className="flex justify-end mb-4">
