@@ -1,10 +1,17 @@
 {
-  "home": {},
+  "home": {
+    "title": "홈"
+  },
   "devices": {
     "title": "Devices",
     "table-columns": ["#", "IP", "Manufacturer", "Model", "Type", "Status"]
   },
-  "security-alerts": {},
+  "device-detail": {
+    "title": "Device detail"
+  },
+  "security-alerts": {
+    "title": "Security Alerts"
+  },
   "vulnerabilities": {
     "title": "Vulnerabilities",
     "table-columns": [

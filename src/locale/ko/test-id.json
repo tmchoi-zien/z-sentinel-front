@@ -1,9 +1,11 @@
 {
-  "modal": {
+  "modals": {
     "security-alert-detail": {
+      "title": "MODAL: Security alert detail",
       "test-name": "modal-security-alert-detail"
     },
     "vulnerability-detail": {
+      "title": "MODAL: Vulnerability detail",
       "test-name": "modal-vulnerability-detail"
     }
   },
@@ -12,7 +14,28 @@
     "target": "icon-target",
     "trash": "icon-trash"
   },
-  "pages": {},
+  "pages": {
+    "home": {
+      "title": "PAGE: Home",
+      "test-name": "page-home"
+    },
+    "devices": {
+      "title": "PAGE: Devices",
+      "test-name": "page-devices"
+    },
+    "device-detail": {
+      "title": "PAGE: Device detail",
+      "test-name": "page-devices"
+    },
+    "security-alerts": {
+      "title": "PAGE: Security alerts",
+      "test-name": "page-security-alerts"
+    },
+    "vulnerabilities": {
+      "title": "PAGE: Vulnerabilities",
+      "test-name": "page-vulnerabilities"
+    }
+  },
   "component": {
     "tab": "component-tab",
     "file-upload": "component-file-upload",

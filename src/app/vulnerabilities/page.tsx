@@ -65,7 +65,7 @@ export default function Vulnerabilities() {
 
   return (
     <>
-      <h3>Vulnerabilities</h3>
+      <h3>{t["title"]}</h3>
 
       <Table
         getData={getAssetList}

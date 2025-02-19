@@ -1,4 +1,8 @@
 {
-  "security-alert-detail": {},
-  "vulnerability-deail": {}
+  "security-alert-detail": {
+    "title": "Security alert detail"
+  },
+  "vulnerability-detail": {
+    "title": "Vulnerability detail"
+  }
 }
