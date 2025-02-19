@@ -40,7 +40,7 @@ import { AuthAxios } from "./AuthAxios";
 
 const instance = AuthAxios();
 
-export async function getAssetLIst(queryString: string) {
+export async function getAssetList(queryString: string) {
   const response = await instance.get(
     `http://192.168.2.134:8001/api/external/inspection/list?${queryString}`,
   );

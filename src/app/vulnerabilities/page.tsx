@@ -3,28 +3,16 @@ import { useMemo } from "react";
 import { type MRT_ColumnDef } from "material-react-table";
 
 import * as TEXT from "@/locale/ko/page.json";
-import VulnerabilitiesLogic from "./logic";
-import { AssetType, ListType } from "@/types/api";
-import CustomTable from "@/components/commons/CustomTable";
+import { AssetType } from "@/types/api";
+import { getAssetList } from "@/api";
+import Table from "@/components/commons/Table";
 import useModal from "@/components/modals/useModal";
+import VulnerabilitiesLogic from "./logic";
 
 const t = TEXT["vulnerabilities"];
 
 export default function Vulnerabilities() {
-  const {
-    data,
-    isLoading,
-    isError,
-    isRefetching,
-    columnFilters,
-    setColumnFilters,
-    globalFilter,
-    setGlobalFilter,
-    sorting,
-    setSorting,
-    pagination,
-    setPagination,
-  } = VulnerabilitiesLogic();
+  const res = VulnerabilitiesLogic();
   const { openVulnerabilityDetail } = useModal();
 
   const columns = useMemo<MRT_ColumnDef<AssetType>[]>(
@@ -78,21 +66,10 @@ export default function Vulnerabilities() {
   return (
     <>
       <h3>Vulnerabilities</h3>
-      <CustomTable
+
+      <Table
+        getData={getAssetList}
         columns={columns}
-        data={(data as ListType<AssetType>)?.content || []}
-        totalElements={data?.totalElements ?? 0}
-        isError={isError}
-        isLoading={isLoading}
-        isRefetching={isRefetching}
-        setColumnFilters={setColumnFilters}
-        setGlobalFilter={setGlobalFilter}
-        setPagination={setPagination}
-        setSorting={setSorting}
-        columnFilters={columnFilters}
-        globalFilter={globalFilter}
-        pagination={pagination}
-        sorting={sorting}
         onRowClick={(row) => {
           openVulnerabilityDetail({ index: row.index, onClose: () => {} });
         }}

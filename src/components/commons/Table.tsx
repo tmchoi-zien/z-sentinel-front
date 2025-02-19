@@ -1,236 +1,119 @@
-import { useEffect, useMemo, useState } from "react";
 import {
-  ColumnDef,
-  getCoreRowModel,
-  useReactTable,
-  flexRender,
-  Row,
-  Cell,
-  getFilteredRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-} from "@tanstack/react-table";
-import { downloadCSV, exportCSV } from "@/utils/CSVParser";
-import * as t from "@/locale/ko/test-id.json";
-import Button from "./Button";
+  MRT_Row,
+  MRT_RowData,
+  MRT_ColumnDef,
+  MRT_SortingState,
+  MaterialReactTable,
+  MRT_PaginationState,
+  useMaterialReactTable,
+  MRT_ColumnFiltersState,
+} from "material-react-table";
+import CustomTopToolbar from "./CustomTopToolbar";
+import { useState } from "react";
+import { useQuery } from "react-query";
+interface Props<T extends MRT_RowData> {
+  getData: (res: any) => Promise<any>;
+  columns: MRT_ColumnDef<T>[];
+  onRowClick?: (row: MRT_Row<T>) => void;
+}
 
-export type TableProps<T> = {
-  columns: ColumnDef<T>[];
-  rows: T[];
-  page: number;
-  setPage: (page: number) => void;
-  totalPages: number;
-  noDataMessage?: string;
-  showExport?: boolean;
-  showSearch?: boolean;
-  showFilter?: boolean;
-  search?: string;
-  setSearch?: (search: string) => void;
-  setSearchType?: (search: string) => void;
-  setSearchType2?: (search: string) => void;
-  customSize?: boolean;
-};
-
-export default function Table<T>({
-  rows,
+export default function Table<T extends MRT_RowData>({
+  getData,
   columns,
-  noDataMessage = "데이터가 없습니다.",
-  showExport = false,
-  showSearch = false,
-  showFilter = false,
-  page,
-  setPage,
-  totalPages,
-  search,
-  setSearch,
-  setSearchType,
-  setSearchType2,
-  customSize = false,
-}: TableProps<T>) {
-  const [filters, setFilters] = useState<any>({});
-
-  const handleFilterChange = (columnId: string, value: string) => {
-    const updatedFilters = { ...filters, [columnId]: value };
-  };
-
-  const handlePageChange = (page: number) => {
-    setPage && setPage(page);
-  };
-
-  // csv export 기능
-  const handleExport = () => {
-    const csvContent = exportCSV(columns, rows);
-    downloadCSV(csvContent, "test.csv");
-  };
-
-  const table = useReactTable<T>({
-    data: rows,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
+  onRowClick,
+}: Props<T>) {
+  const [columnFilters, setColumnFilters] = useState<MRT_ColumnFiltersState>(
+    [],
+  );
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [sorting, setSorting] = useState<MRT_SortingState>([]);
+  const [pagination, setPagination] = useState<MRT_PaginationState>({
+    pageIndex: 0,
+    pageSize: 3,
   });
 
-  const { getHeaderGroups, getRowModel } = table;
-  const isNoData = getRowModel().rows.length === 0;
-
-  const visiblePages = useMemo(() => {
-    const start = Math.max(0, page - 3);
-    const end = Math.min(totalPages - 1, page + 3);
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
-  }, [page, totalPages]);
-
-  return (
-    <div data-testid={[t.component["table"]]} className="w-full">
-      {/* Filter 기능 */}
-      {/* {showFilter && (
-        <div className="mb-4">
-        {columns.map((column) => (
-          column.get
-          column.getFilterValue ? (
-            <div key={column.id} className="inline-block mr-4">
-              <label className="block text-sm text-gray-600">{column.Header}</label>
-              <input
-                type="text"
-                value={filters[column.id] || ""}
-                onChange={(e) => handleFilterChange(column.id, e.target.value)}
-                placeholder={`Filter ${column.Header}`}
-                className="border rounded px-2 py-1 mt-1"
-              />
-            </div>
-          ) : null
-        ))}
-      </div>
-      )} */}
-
-      {/* Export 기능 */}
-      {showExport && (
-        <div data-testid="export" className="flex justify-end mb-4">
-          <Button
-            color="navy"
-            size="xs"
-            text="CSV다운로드"
-            icon="plus"
-            type="button"
-            onClick={handleExport}
-          />
-        </div>
-      )}
-
-      {/* 검색 기능 */}
-      {showSearch && (
-        <div data-testid="search" className="p-4 bg-gray-100">
-          <input
-            type="text"
-            value={search}
-            onChange={(e) => setSearch && setSearch(e.target.value)}
-            placeholder="Search..."
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-      )}
-
-      {/* 테이블 헤더 */}
-      <div className="flex flex-col">
-        {getHeaderGroups().map((headerGroup) => (
-          <div key={headerGroup.id} className="flex justify-center">
-            {headerGroup.headers.map((header) => (
-              <div
-                key={header.id}
-                className="flex justify-center flex-1 px-4 py-2 text-sm text-gray-400 uppercase items-center"
-                style={
-                  customSize
-                    ? {
-                        minWidth: `${header.column.columnDef.size}px`,
-                        flex: `0 0 ${header.column.columnDef.size}px`,
-                      }
-                    : {}
-                }
-              >
-                {header.isPlaceholder
-                  ? null
-                  : flexRender(
-                      header.column.columnDef.header,
-                      header.getContext(),
-                    )}
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-
-      {/* 테이블 row */}
-      <div className="flex flex-col divide-y divide-gray-200 mb-4">
-        {isNoData ? (
-          <div className="w-full flex justify-center items-center">
-            {noDataMessage}
-          </div>
-        ) : (
-          getRowModel().rows.map((row: Row<T>) => (
-            <div
-              key={row.id}
-              className="flex justify-center"
-              data-testid={`row-${row.id}`}
-            >
-              {row.getVisibleCells().map((cell: Cell<T, any>) => {
-                return (
-                  <div
-                    key={cell.id}
-                    className="flex flex-1 justify-center items-center px-4 py-2 truncate text-xs overflow-hidden whitespace-pre-line"
-                    style={
-                      customSize
-                        ? {
-                            minWidth: `${cell.column.columnDef.size}px`,
-                            flex: `0 0 ${cell.column.columnDef.size}px`,
-                          }
-                        : {}
-                    }
-                  >
-                    {/* {cell.getValue()} */}
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </div>
-                );
-              })}
-            </div>
-          ))
-        )}
-      </div>
-
-      {/* 페이지네이션 */}
-      {totalPages > 1 && (
-        <div className="flex items-center justify-center p-4 space-x-2">
-          {page > 0 && (
-            <button
-              onClick={() => handlePageChange(page - 1)}
-              className="px-3 py-1 bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              {"<<"}
-            </button>
-          )}
-          {visiblePages.map((index) => (
-            <button
-              key={index}
-              onClick={() => handlePageChange(index)}
-              className={`px-4 py-2 border rounded ${
-                page !== undefined && page === index
-                  ? "bg-navy text-white"
-                  : "bg-white text-navy"
-              }`}
-            >
-              {index + 1}
-            </button>
-          ))}
-          {page < totalPages - 1 && (
-            <button
-              onClick={() => handlePageChange(page + 1)}
-              disabled={page === totalPages}
-              className="px-3 py-1 bg-gray-200 hover:bg-gray-300 disabled:opacity-50"
-            >
-              {">>"}
-            </button>
-          )}
-        </div>
-      )}
-    </div>
+  const { data, isLoading, isError, isRefetching } = useQuery(
+    [
+      `asset-list`,
+      {
+        // columnFilters,
+        globalFilter,
+        pagination,
+        // sorting,
+      },
+    ],
+    () => {
+      const page = `page=${pagination.pageIndex}`;
+      const size = `size=${pagination.pageSize}`;
+      const filters = `filters=${JSON.stringify(columnFilters ?? [])}`;
+      const gFilter = `search=${globalFilter}`;
+      const sort = `sort=${JSON.stringify(sorting ?? [])}`;
+      const queryString = `${page}&${size}&${filters}&${gFilter}&${sort}`;
+      console.log("get Asset list: query string::", queryString);
+      return getData(queryString);
+    },
   );
+
+  const table = useMaterialReactTable({
+    columns,
+    data: data?.content ?? [],
+    onColumnFiltersChange: setColumnFilters, // onChange callback on filter by column
+    onGlobalFilterChange: setGlobalFilter, // onChange callback on global filter(ex: search)
+    onPaginationChange: setPagination, // onChange callback on pagination
+    onSortingChange: setSorting, // onChange callback on sorting
+    state: {
+      columnFilters,
+      globalFilter,
+      isLoading,
+      pagination,
+      showAlertBanner: isError,
+      showProgressBars: isRefetching,
+      sorting,
+    },
+    rowCount: data?.totalElements ?? 0,
+    // 초기 세팅
+    initialState: {
+      showColumnFilters: false, // 컬럼 별 필터 노출
+      showGlobalFilter: true, // 검색 기능 노출
+      // 헤더 고정
+      columnPinning: {
+        left: ["mrt-row-expand", "mrt-row-select"],
+        right: ["mrt-row-actions"],
+      },
+    },
+    enableColumnPinning: true, // 컬럼 고정
+    enableColumnActions: false, // 컬럼별 추가 필터기능 on/off
+    manualPagination: true,
+    manualSorting: true,
+    renderTopToolbar: CustomTopToolbar, // 커스텀 탑 툴바 렌더링
+    muiToolbarAlertBannerProps: isError
+      ? {
+          color: "error",
+          children: "Error loading data",
+        }
+      : undefined,
+    // 테이블 로우 클릭 이벤트
+    muiTableBodyRowProps: ({ row }) => {
+      return {
+        onClick: () => {
+          onRowClick && onRowClick(row);
+        },
+      };
+    },
+    // 페이지네이션 UI 옵션
+    muiPaginationProps: {
+      shape: "rounded",
+      color: "primary",
+      variant: "text",
+      showRowsPerPage: false,
+    },
+    paginationDisplayMode: "pages",
+    muiTableContainerProps: {
+      sx: {
+        minHeight: "50vh",
+      },
+    },
+  });
+
+  return <MaterialReactTable table={table} />;
 }
