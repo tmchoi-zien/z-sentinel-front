@@ -12,6 +12,7 @@ import VulnerabilitiesLogic from "./logic";
 import Vulnerabilities from "./page";
 import { mkConfig, generateCsv, download } from "export-to-csv";
 import { useQuery } from "react-query";
+import Provider from "@/components/Provider";
 
 const m = TEXT["vulnerabilities"];
 const t = TEST["pages"]["vulnerabilities"];
@@ -308,18 +309,121 @@ jest.mock("export-to-csv", () => ({
 }));
 
 describe(`${t["title"]}`, () => {
-  beforeEach(() => {
-    (useQuery as jest.Mock).mockReturnValue({
-      data: MOCK,
-      isLoading: false,
-      isError: false,
-      isRefetching: false,
-    });
-    (VulnerabilitiesLogic as jest.Mock).mockReturnValue({});
-    render(<Vulnerabilities />);
+  (useQuery as jest.Mock).mockReturnValue({
+    data: MOCK,
+    isLoading: false,
+    isError: false,
+    isRefetching: false,
   });
+  (VulnerabilitiesLogic as jest.Mock).mockReturnValue({});
+  render(
+    <Provider>
+      <Vulnerabilities />
+    </Provider>,
+  );
 
   test("title 표출", () => {
     expect(screen.getByText(m["title"])).toBeInTheDocument();
+  });
+
+  test("TAB: Overview", () => {
+    expect(screen.getByTestId(t["tab-overview"])).toBeInTheDocument();
+  });
+
+  // Overview 탭
+  test("CHART: 위험도 수준 표출", () => {
+    const ele = screen.getByTestId(t["tile-infra-security-level"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("TILE: High risk devices", () => {
+    const ele = screen.getByTestId(t["tile-high-risk-devices"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("TILE: Devices by level", () => {
+    const ele = screen.getByTestId(t["tile-devices-by-level"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("CHART: vulnerabilities", () => {
+    const ele = screen.getByTestId(t["chart-vulnerabilities"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("CHART: security", () => {
+    const ele = screen.getByTestId(t["chart-security"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("CHART: Vuln models", () => {
+    const ele = screen.getByTestId(t["chart-vuln-models"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("CHART: Device type", () => {
+    const ele = screen.getByTestId(t["chart-device-type"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("CHART: Vuln manufacturer", () => {
+    const ele = screen.getByTestId(t["chart-vuln-manufacturer"]);
+    expect(ele).toBeInTheDocument();
+    // 값 표출
+    if (false) {
+      expect(ele).toHaveTextContent(``);
+    }
+  });
+
+  test("TAB: Vulnerabilities", () => {
+    const tab = screen.getByTestId(t["tab-vulnerabilities"]);
+    expect(tab).toBeInTheDocument();
+    fireEvent.click(tab);
+  });
+
+  // Vulnerabilities 탭
+
+  test("TABLE: Vulnerabilities", () => {
+    const ele = screen.getByTestId(t["table-vuln"]);
+    expect(ele).toBeInTheDocument();
+
+    // 컬럼 조회
+    m["table-columns"].forEach((column) => {
+      expect(ele).toHaveTextContent(column);
+    });
+    // 로우 클릭 시 디테일 페이지 이동
+    const rowItem = within(ele).getByText("1");
+    fireEvent.click(rowItem);
+    expect(
+      screen.getByTestId(TEST["modals"]["vulnerability-detail"]["test-name"]),
+    ).toBeInTheDocument();
   });
 });

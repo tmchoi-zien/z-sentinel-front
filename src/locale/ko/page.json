@@ -7,10 +7,21 @@
     "table-columns": ["#", "IP", "Manufacturer", "Model", "Type", "Status"]
   },
   "device-detail": {
-    "title": "Device detail"
+    "title": "Device detail",
+    "table-columns": ["Dependency", "Version", "CPE"]
   },
   "security-alerts": {
-    "title": "Security Alerts"
+    "title": "Security Alerts",
+    "table-columns": [
+      "#",
+      "Detected Rule",
+      "Date",
+      "Priority",
+      "Src IP",
+      "Src Port",
+      "Dst IP",
+      "Dst Port"
+    ]
   },
   "vulnerabilities": {
     "title": "Vulnerabilities",

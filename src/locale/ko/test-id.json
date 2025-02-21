@@ -2,11 +2,19 @@
   "modals": {
     "security-alert-detail": {
       "title": "MODAL: Security alert detail",
-      "test-name": "modal-security-alert-detail"
+      "test-name": "modal-security-alert-detail",
+      "area-header": "modal-security-alert-detail-area-header",
+      "icon-priority": "modal-vulnerability-detail-icon-priority",
+      "area-info": "modal-security-alert-detail-area-info",
+      "area-description": "modal-security-alert-detail-area-description"
     },
     "vulnerability-detail": {
       "title": "MODAL: Vulnerability detail",
-      "test-name": "modal-vulnerability-detail"
+      "test-name": "modal-vulnerability-detail",
+      "area-header": "modal-vulnerability-detail-area-header",
+      "area-description": "modal-vulnerability-detail-area-description",
+      "area-severity": "modal-vulnerability-detail-area-severity",
+      "area-products-affected": "modal-vulnerability-detail-area-products-affected"
     }
   },
   "icon": {
@@ -17,23 +25,65 @@
   "pages": {
     "home": {
       "title": "PAGE: Home",
-      "test-name": "page-home"
+      "test-name": "page-home",
+      "tile-devices": "page-home-tile-devices",
+      "tile-infra-security-level": "page-home-tile-infra-security-level",
+      "tile-high-risk-devices": "page-home-tile-high-risk-devices",
+      "tile-security-alerts": "page-home-tile-security-alerts",
+      "chart-week-device": "page-home-chart-week-device",
+      "chart-vulnerabilities": "page-home-chart-vulnerabilities",
+      "chart-security-alert": "page-home-chart-security-alert",
+      "list-security-alert": "page-home-list-security-alert",
+      "graph-security-alert": "page-home-graph-security-alert"
     },
     "devices": {
       "title": "PAGE: Devices",
-      "test-name": "page-devices"
+      "test-name": "page-devices",
+      "table-devices": "page-devices-table-devices"
     },
     "device-detail": {
       "title": "PAGE: Device detail",
-      "test-name": "page-devices"
+      "test-name": "page-device-detail",
+      "tab-profile": "page-device-detail-tab-profile",
+      "tab-vulnerability": "page-device-detail-tab-vulnerability",
+      "tab-alert": "page-device-detail-tab-alert",
+      "area-device-info": "page-device-detail-area-device-info",
+      "area-firmware": "page-device-detail-area-firmware",
+      "area-sbom": "page-device-detail-area-sbom",
+      "table-sbom": "page-device-detail-table-sbom",
+      "area-service": "page-device-detail-area-service",
+      "tile-device-security-level": "page-device-security-detail-tile-device-level",
+      "tile-device-by-level": "page-device-detail-tile-device-by-level",
+      "table-vulnerability": "page-device-detail-table-vulnerability",
+      "area-alert-info": "page-device-detail-area-alert-info",
+      "area-alerts": "page-device-detail-area-alerts",
+      "area-network-topology": "page-device-detail-area-network-topology",
+      "chart-ips-distribution": "page-device-detail-chart-ips-distribution",
+      "graph-protocol-distribution": "page-device-detail-graph-protocol-distribution",
+      "graph-warning": "page-device-detail-graph-warning"
     },
     "security-alerts": {
       "title": "PAGE: Security alerts",
-      "test-name": "page-security-alerts"
+      "test-name": "page-security-alerts",
+      "tab-graph": "page-security-alerts-tab-graph",
+      "tab-security-alerts": "page-security-alerts-tab-security-alerts",
+      "graph-security-alerts": "page-security-alerts-graph-security-alerts",
+      "table-security-alerts": "page-security-alerts-table-security-alerts"
     },
     "vulnerabilities": {
       "title": "PAGE: Vulnerabilities",
-      "test-name": "page-vulnerabilities"
+      "test-name": "page-vulnerabilities",
+      "tab-overview": "page-vulnerabilities-tab-overview",
+      "tab-vulnerabilities": "page-vulnerabilities-tab-vulnerabilities",
+      "tile-infra-security-level": "page-vulnerabilities-tile-infra-security-level",
+      "tile-high-risk-devices": "page-vulnerabilities-tile-high-risk-devices",
+      "tile-devices-by-level": "page-vulnerabilities-tile-devices-by-level",
+      "chart-vulnerabilities": "page-vulnerabilities-chart-vulnerabilities",
+      "chart-security": "page-vulnerabilities-chart-security",
+      "chart-vuln-models": "page-vulnerabilities-chart-vuln-models",
+      "chart-device-type": "page-vulnerabilities-chart-device-type",
+      "chart-vuln-manufacturer": "page-vulnerabilities-chart-vuln-manufacturer",
+      "table-vuln": "page-vulnerabilities-table-vuln"
     }
   },
   "component": {

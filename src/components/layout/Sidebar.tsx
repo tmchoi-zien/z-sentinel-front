@@ -1,8 +1,7 @@
 "use client";
-import { useContext, useEffect, useState } from "react";
+import { useState } from "react";
 
 import { MENUS, MenusType } from "@/constants/menu";
-import { GlobalContext } from "@/contexts/GlobalContext";
 import MenuItem from "./MenuItem";
 import Button from "../commons/Button";
 import useModal from "../modals/useModal";
@@ -12,18 +11,9 @@ import useModal from "../modals/useModal";
  */
 
 export default function Sidebar() {
-  const { info } = useContext(GlobalContext);
-  const [menus, setMenus] = useState<MenusType[]>();
+  const [menus, setMenus] = useState<MenusType[]>(MENUS);
 
   const { openVulnerabilityDetail, openSecurityAlertDetail } = useModal();
-
-  useEffect(() => {
-    setMenus(filterMenus());
-  }, [info]);
-
-  const filterMenus = () => {
-    return MENUS;
-  };
 
   return (
     <div
