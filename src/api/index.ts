@@ -1,5 +1,4 @@
 import axios from "axios";
-import { AuthAxios } from "./AuthAxios";
 
 /**
  * File 업로드 예시
@@ -38,11 +37,72 @@ import { AuthAxios } from "./AuthAxios";
 //   return response.data;
 // }
 
-const instance = AuthAxios();
+const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-export async function getAssetList(queryString: string) {
-  const response = await instance.get(
-    `http://192.168.2.134:8001/api/external/inspection/list?${queryString}`,
+/**
+ * Home
+ */
+
+export async function getHomeDevices() {
+  const response = await axios.get(`${BASE_URL}/api/devices`);
+  return response.data;
+}
+
+export async function getHomeScans() {
+  const response = await axios.get(`${BASE_URL}/api/scans`);
+  return response.data;
+}
+
+export async function getHomeDevicesHighRisk() {
+  const response = await axios.get(`${BASE_URL}/api/devices-high-risk`);
+  return response.data;
+}
+
+export async function getHomeAlerts(week?: string) {
+  const response = await axios.get(`${BASE_URL}/api/alerts`, {
+    params: {
+      week,
+    },
+  });
+  return response.data;
+}
+
+export async function getHomeWeakDevices() {
+  const response = await axios.get(
+    `${BASE_URL}/api/devices-vulnerability-category`,
   );
   return response.data;
 }
+
+export async function getHomeVulns() {
+  const response = await axios.get(`${BASE_URL}/api/vulnerabilities-top5`);
+  return response.data;
+}
+
+export async function getHomeSecurityAlerts() {
+  const response = await axios.get(`${BASE_URL}/api/devices-alert-category`);
+  return response.data;
+}
+
+/**
+ * Devices
+ */
+
+export async function getDevices() {
+  const response = await axios.get(`${BASE_URL}/api/devices`);
+  return response.data;
+}
+
+/**
+ * Devices detail
+ */
+
+/**
+ * Vulnerabilities
+ */
+/**
+ * Security-alerts
+ */
+/**
+ * Modal
+ */

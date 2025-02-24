@@ -3,80 +3,112 @@
  * get요청, post요청에 대한 데이터 타입 정의
  */
 
-export interface ListType<T> {
-  content: T[];
-  pageable: Pageable;
-  last: boolean;
-  totalPages: number;
-  totalElements: number;
-  size: number;
-  number: number;
-  sort: Sort;
-  first: boolean;
-  numberOfElements: number;
-  empty: boolean;
+export interface ResponseType<T> {
+  code: number;
+  data: T[];
 }
 
-export interface Pageable {
-  sort: Sort;
-  pageSize: number;
-  pageNumber: number;
-  offset: number;
-  paged: boolean;
-  unpaged: boolean;
+/**
+ * Home
+ */
+
+export interface HomeDeviceType {
+  id: number;
+  created: string;
+  modified: string;
+  ip: string;
+  macAddress: string;
+  manufacturer: string;
+  type: string;
+  model: string;
+  description: string;
+  createdBy: any;
+  scan: number;
 }
 
-export interface Sort {
-  sorted: boolean;
-  unsorted: boolean;
-}
-
-export interface AssetType {
-  idx: number;
-  workType: string;
-  infraWorkIdx: number;
-  pentestWorkIdx: number;
-  name: string;
-  projectName: any;
-  securityPortalPk: any;
-  year: number;
+export interface HomeLevelType {
+  id: number;
+  overallRisk: string;
+  created: string;
+  modified: string;
   status: string;
-  sso1SaUser: string;
-  sso1Name: string;
-  sso1PositionLevel: string;
-  sso2SaUser: any;
-  sso2Name: any;
-  sso2PositionLevel: any;
-  sso3SaUser: any;
-  sso3Name: any;
-  sso3PositionLevel: any;
-  sso4SaUser: any;
-  sso4Name: any;
-  sso4PositionLevel: any;
-  openDay: string;
-  dueDay: any;
-  infraRequestDay: string | null;
-  pentestRequestDay?: string | null;
-  inspectionManagerI: string | null;
-  inspectionManagerP: string | null;
-  infraStatus: string;
-  pentestStatus: string;
-  infraReportName: string;
-  pentestReportName: string;
-  infraWeeknessSang: number;
-  infraWeeknessJung: number;
-  infraWeeknessHa: number;
-  infraRemindSang: number;
-  infraRemindJung: number;
-  infraRemindHa: number;
-  pentestWeeknessSang: number;
-  pentestWeeknessJung: number;
-  pentestWeeknessHa: number;
-  pentestRemindSang: number;
-  pentestRemindJung: number;
-  pentestRemindHa: number;
-  infraCount: number;
-  pentestCount: number;
-  infraIsTemporary: boolean;
-  pentestIsTemporary: boolean;
+  description: string;
+  createdBy: any;
 }
+
+export interface HomeHighRiskDevcieType {
+  id: number;
+  vulnerabilityCategory: string;
+  created: string;
+  modified: string;
+  ip: string;
+  macAddress: string;
+  manufacturer: string;
+  type: string;
+  model: string;
+  description: string;
+  createdBy: any;
+  scan: number;
+}
+
+export interface HomeWeakDeviceType {
+  id: number;
+  vulnerabilityCategory: string;
+  created: string;
+  modified: string;
+  ip: string;
+  macAddress: string;
+  manufacturer: string;
+  type: string;
+  model: string;
+  description: string;
+  createdBy: any;
+  scan: number;
+}
+
+export interface HomeVulnsType {
+  name: string;
+  count: number;
+}
+
+export interface HomeSecurityAlertType {
+  id: number;
+  alertFrequency: number;
+  alertCategory: string;
+  created: string;
+  modified: string;
+  ip: string;
+  macAddress: string;
+  manufacturer: string;
+  type: string;
+  model: string;
+  description: string;
+  createdBy: any;
+  scan: number;
+}
+
+export interface HomeAlertType {
+  id: number;
+  created: string;
+  modified: string;
+  name: string;
+  priority: number;
+  severity: string;
+  cvss: number;
+  sourceIp: string;
+  sourcePort: number;
+  destinationIp: string;
+  destinationPort: number;
+  createdBy: any;
+  device: number;
+}
+
+/**
+ * Devices
+ */
+/**
+ * Vulnerabilities
+ */
+/**
+ * Security alerts
+ */
