@@ -1,11 +1,6 @@
 "use client";
 import "@/css/globals.css";
 import Provider from "@/components/Provider";
-import { Inter } from "next/font/google";
-
-const inter = Inter({
-  subsets: ["latin"],
-});
 
 export default function RootLayout({
   children,
@@ -14,7 +9,13 @@ export default function RootLayout({
 }>) {
   return (
     <html>
-      <body className={inter.className}>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"
+        />
+      </head>
+      <body className="font-wanted font-medium">
         <Provider>{children}</Provider>
       </body>
     </html>
