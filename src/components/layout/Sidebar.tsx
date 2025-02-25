@@ -19,7 +19,7 @@ export default function Sidebar() {
   return (
     <div
       data-testid="side-bar"
-      className="w-[280px] h-full bg-sidebar text-white py-[20px] px-[20px]"
+      className="w-[280px] h-full bg-sidebar py-[20px] px-[20px]"
     >
       <div className="flex flex-col items-center gap-[26px] w-full h-full">
         <div className="flex items-center justify-center py-[20px]">

@@ -15,7 +15,7 @@ export default function RootLayout({
           href="https://fastly.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.1/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.min.css"
         />
       </head>
-      <body className="font-wanted font-medium">
+      <body className="font-wanted font-medium text-white">
         <Provider>{children}</Provider>
       </body>
     </html>

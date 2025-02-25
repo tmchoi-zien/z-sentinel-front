@@ -84,6 +84,11 @@ export async function getHomeSecurityAlerts() {
   return response.data;
 }
 
+export async function getHomeAlertsGraph() {
+  const response = await axios.get(`${BASE_URL}/api/alert-graph`);
+  return response.data;
+}
+
 /**
  * Devices
  */

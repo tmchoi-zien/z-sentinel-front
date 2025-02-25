@@ -1,6 +1,20 @@
 {
   "home": {
-    "title": "홈"
+    "title": "홈",
+    "devices": "Devices",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "level": "Security Level Assessment",
+    "high-risk-device": "High Risk Devices",
+    "tile-security-alerts": "Security Alerts",
+    "weak-device": "Top 5 Weak Device",
+    "weak-device-columns": ["Device", "Severity", "Total"],
+    "vulns": "Top 5 Vulnerabilities",
+    "vulns-columns": ["CVE ID", "Severity", "total"],
+    "security-alerts": "Top 5 Security Alerts",
+    "security-alerts-columns": ["Device", "Alerts", "Severity"],
+    "list-security-alerts": "Security Alerts",
+    "graph-security-alerts": "Security Alerts"
   },
   "devices": {
     "title": "Devices",

@@ -7,3 +7,5 @@ export const ROUTE = {
   VULNERABILITIES: "/vulnerabilities",
   SECURITY_ALERTS: "/security-alerts",
 };
+
+export const LEVEL = ["critical", "high", "medium", "low"] as const;

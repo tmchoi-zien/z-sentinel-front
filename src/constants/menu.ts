@@ -1,7 +1,7 @@
-import HomeIcon from "@/components/icons/HomeIcon";
 import { ROUTE } from "./common";
-import DeviceIcon from "@/components/icons/DevicesIcon";
+import HomeIcon from "@/components/icons/HomeIcon";
 import VulnsIcon from "@/components/icons/VulnsIcon";
+import DeviceIcon from "@/components/icons/DevicesIcon";
 import SecurityAlertsIcon from "@/components/icons/SecurityAlertsIcon";
 export interface MenusType {
   title: string;

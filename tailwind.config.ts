@@ -14,13 +14,28 @@ export default {
   ],
   theme: {
     extend: {
+      flex: {
+        2: "2 2 0%",
+        3: "3 3 0%",
+        4: "4 4 0%",
+        5: "5 5 0%",
+        6: "6 6 0%",
+        7: "7 7 0%",
+        8: "8 8 0%",
+        9: "9 9 0%",
+      },
       fontFamily: {
-        wanted: ['"Wanted Sans"', "sans-serif"],
+        wanted: ["Wanted Sans"],
       },
       colors: {
         background: "#030712",
         sidebar: "#0e131f",
         "menu-active": "#7856FF",
+        "box-color": "#0E131F",
+        critical: "#f72585",
+        high: "#7209B7",
+        medium: "#3470EC",
+        low: "#00B4D8",
       },
     },
   },
