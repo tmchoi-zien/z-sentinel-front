@@ -3,9 +3,11 @@
  * get요청, post요청에 대한 데이터 타입 정의
  */
 
+import { Node, Edge } from "vis-network";
+
 export interface ResponseType<T> {
   code: number;
-  data: T[];
+  data: T;
 }
 
 /**
@@ -101,6 +103,11 @@ export interface HomeAlertType {
   destinationPort: number;
   createdBy: any;
   device: number;
+}
+
+export interface HomeGraphType {
+  nodes: Node[];
+  edges: Edge[];
 }
 
 /**

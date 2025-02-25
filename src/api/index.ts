@@ -58,11 +58,9 @@ export async function getHomeDevicesHighRisk() {
   return response.data;
 }
 
-export async function getHomeAlerts(week?: string) {
+export async function getHomeAlerts(params?: any) {
   const response = await axios.get(`${BASE_URL}/api/alerts`, {
-    params: {
-      week,
-    },
+    params,
   });
   return response.data;
 }
@@ -80,6 +78,11 @@ export async function getHomeVulns() {
 }
 
 export async function getHomeSecurityAlerts() {
+  const response = await axios.get(`${BASE_URL}/api/devices-alert-category`);
+  return response.data;
+}
+
+export async function getHomeAlertsGraph() {
   const response = await axios.get(`${BASE_URL}/api/devices-alert-category`);
   return response.data;
 }
@@ -103,6 +106,17 @@ export async function getDevices() {
 /**
  * Security-alerts
  */
+
+export async function getSecurityAlertsGraph() {
+  const response = await axios.get(`${BASE_URL}/api/alert-graph`);
+  return response.data;
+}
+
 /**
  * Modal
  */
+
+export async function getAlert(id: number) {
+  const response = await axios.get(`${BASE_URL}/api/alerts/${id}`);
+  return response.data;
+}

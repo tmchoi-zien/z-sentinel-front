@@ -7,6 +7,7 @@ import {
   createContext,
   ComponentType,
   useContext,
+  useEffect,
 } from "react";
 import Modal, { SizeType } from "@/components/modals/Modal";
 
@@ -20,7 +21,7 @@ export interface openModalProps {
 }
 
 export interface ModalType {
-  id: number;
+  id: string;
   size: SizeType;
   children: ComponentType<any>;
   open: boolean;
@@ -31,7 +32,7 @@ export interface ModalType {
 export interface ModalContextProps {
   modals: ModalType[];
   openModal: ({ options, onClose }: openModalProps) => void;
-  closeModal: (idx: number, res?: any) => void;
+  closeModal: (id: string, res?: any) => void;
 }
 
 const defaultModalContext: ModalContextProps = {
@@ -46,13 +47,18 @@ export const ModalContext =
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [modals, setModals] = useState<ModalType[]>([]);
 
+  useEffect(() => {
+    console.log("modals", modals);
+  }, [modals]);
+
   const openModal = useCallback(
     ({ options, onClose }: openModalProps) => {
       const newModal: ModalType = {
         size: options.size,
         children: options.children,
         open: true,
-        id: modals.length,
+        id: crypto.randomUUID(),
+        // id: modals.length,
         data: options.data,
         onClose,
       };
@@ -64,11 +70,13 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
   );
 
   const closeModal = useCallback(
-    (index: number, res?: any) => {
-      if (modals[index].onClose) modals[index].onClose(res);
+    (id: string, res?: any) => {
+      console.log("close modal", id, res || "");
+      const closedIndex = modals.findIndex((item) => item.id === id);
+      if (modals[closedIndex].onClose) modals[closedIndex].onClose(res);
       setModals((prev) => {
         const updatedModal = [...prev];
-        updatedModal[index].open = false;
+        updatedModal[closedIndex].open = false;
         return updatedModal;
       });
     },

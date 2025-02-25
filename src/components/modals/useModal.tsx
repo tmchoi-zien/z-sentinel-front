@@ -2,6 +2,7 @@ import { ModalContext } from "@/contexts/ModalContext";
 import { useContext } from "react";
 import VulnerabilityDetail from "./VulnerabilityDetail/modal";
 import SecurityAlertDetail from "./SecurityAlertDetail/modal";
+import ChooseAlert from "./ChooseAlert/modal";
 // import AddressBook from "./Sample/modal";
 
 export default function useModal() {
@@ -12,38 +13,55 @@ export default function useModal() {
   const { openModal } = context;
 
   const openVulnerabilityDetail = ({
-    index,
+    vulnId,
     onClose,
   }: {
-    index: number;
+    vulnId: number;
     onClose: (res: any) => void;
   }) => {
     openModal({
       options: {
         size: "md",
         children: VulnerabilityDetail,
-        data: { index },
+        data: { vulnId },
       },
       onClose,
     });
   };
 
   const openSecurityAlertDetail = ({
-    index,
+    alertId,
     onClose,
   }: {
-    index: number;
+    alertId: number;
     onClose: (res: any) => void;
   }) => {
     openModal({
       options: {
         size: "md",
         children: SecurityAlertDetail,
-        data: { index },
+        data: { alertId },
       },
       onClose,
     });
   };
 
-  return { openVulnerabilityDetail, openSecurityAlertDetail };
+  const openChooseAlert = ({
+    deviceId,
+    onClose,
+  }: {
+    deviceId: number;
+    onClose: (res: any) => void;
+  }) => {
+    openModal({
+      options: {
+        size: "md",
+        children: ChooseAlert,
+        data: { deviceId },
+      },
+      onClose,
+    });
+  };
+
+  return { openVulnerabilityDetail, openSecurityAlertDetail, openChooseAlert };
 }

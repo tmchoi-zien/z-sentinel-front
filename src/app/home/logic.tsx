@@ -63,7 +63,7 @@ export default function HomeLogic() {
     error: alertsThisWeekError,
   } = useQuery<ResponseType<HomeAlertType[]>, Error>(
     [`home-alerts-this-week`],
-    () => getHomeAlerts(week),
+    () => getHomeAlerts({ week }),
   );
 
   // Top5 - Week deivces

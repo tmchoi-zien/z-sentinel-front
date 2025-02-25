@@ -4,5 +4,8 @@
   },
   "vulnerability-detail": {
     "title": "Vulnerability detail"
+  },
+  "choose-alert": {
+    "title": "Choose alert"
   }
 }
