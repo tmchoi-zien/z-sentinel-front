@@ -29,6 +29,11 @@ export default {
         8: "8 8 0%",
         9: "9 9 0%",
       },
+      lineClamp: {
+        10: "10",
+        12: "12",
+        15: "15",
+      },
       fontFamily: {
         wanted: ["Wanted Sans"],
       },
@@ -38,6 +43,7 @@ export default {
         "main-color": "#7856FF",
         "menu-active": "#7856FF",
         "box-color": "#0E131F",
+        gray: "#999999",
         critical: "#f72585",
         high: "#7209B7",
         medium: "#3470EC",
@@ -51,5 +57,8 @@ export default {
       },
     },
   },
-  plugins: [require("tailwind-scrollbar-hide")],
+  plugins: [
+    require("tailwind-scrollbar-hide"),
+    require("@tailwindcss/line-clamp"),
+  ],
 } satisfies Config;

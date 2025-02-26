@@ -30,11 +30,9 @@ export default function Sidebar() {
             menus.map((menu, idx) => {
               return <MenuItem menu={menu} key={idx} />;
             })}
-          {/* <ul className="flex flex-col gap-5 mt-10">
+          <ul className="flex flex-col gap-5 mt-10">
             <li>
               <Button
-                color="white"
-                size="m"
                 text="modal - vulnerability detail"
                 type="button"
                 onClick={() =>
@@ -44,8 +42,6 @@ export default function Sidebar() {
             </li>
             <li>
               <Button
-                color="white"
-                size="m"
                 text="modal - vulnerability detail"
                 type="button"
                 onClick={() =>
@@ -53,7 +49,7 @@ export default function Sidebar() {
                 }
               />
             </li>
-          </ul> */}
+          </ul>
         </div>
       </div>
     </div>
