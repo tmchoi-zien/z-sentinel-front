@@ -12,6 +12,11 @@ export default {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    {
+      pattern: /min-h-\[\d+px\]/, // min-h-[숫자px] 패턴을 safelist에 추가
+    },
+  ],
   theme: {
     extend: {
       flex: {
@@ -37,6 +42,12 @@ export default {
         high: "#7209B7",
         medium: "#3470EC",
         low: "#00B4D8",
+        na: "#FFFFFF",
+        top1: "#FFC300",
+        top2: "#F72585",
+        top3: "#4CC9F0",
+        top4: "#5DD400",
+        top5: "#005F73",
       },
     },
   },

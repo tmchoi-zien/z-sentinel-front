@@ -16,7 +16,7 @@ import SecurityAlertsItem from "@/components/commons/SecurityAlertsItem";
 import VulnerabilitiesItem from "@/components/commons/VulnerabilitiesItem";
 import SecurityAlertsListItem from "@/components/commons/SecurityAlertsListItem";
 
-const t = TEXT["home"];
+const m = TEXT["home"];
 
 export default function Home() {
   // const {
@@ -59,17 +59,17 @@ export default function Home() {
           <DeviceIcon className="min-w-[60px]" type="dashboard" />
           <div className="flex flex-col justify-center">
             <span className="text-3xl font-bold">26</span>
-            <span className="text-base">Devices</span>
+            <span className="text-base">{m["devices"]}</span>
           </div>
           <div className="flex justify-end w-full">
             <ul className="flex flex-col gap-[10px] mt-[10px]">
               <li className="text-xs">
-                <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                10 Connected
+                <span className="inline-block w-2 h-2 bg-green-500 rounded-full mr-2" />
+                10 {m["connected"]}
               </li>
               <li className="text-xs">
-                <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-2"></span>
-                15 Disconnected
+                <span className="inline-block w-2 h-2 bg-red-500 rounded-full mr-2" />
+                15 {m["disconnected"]}
               </li>
             </ul>
           </div>
@@ -80,7 +80,7 @@ export default function Home() {
           <AtomIcon className="min-w-[60px]" />
           <div className="flex flex-col justify-center">
             <span className="font-bold text-3xl">Medium</span>
-            <span>Security Level Assessment</span>
+            <span>{m["level"]}</span>
           </div>
         </Box>
 
@@ -89,7 +89,7 @@ export default function Home() {
           <RiskIcon className="min-w-[60px]" />
           <div className="flex flex-col justify-center">
             <span className="font-bold text-3xl">2</span>
-            <span>High Risk Devices</span>
+            <span>{m["high-risk-device"]}</span>
           </div>
         </Box>
 
@@ -98,22 +98,22 @@ export default function Home() {
           <AlertIcon className="min-w-[60px]" />
           <div className="flex flex-col justify-center">
             <span className="font-bold text-3xl">2</span>
-            <span>Security Alerts</span>
+            <span>{m["security-alerts"]}</span>
           </div>
         </Box>
       </div>
 
       <div className="flex flex-row flex-grow gap-[30px]">
         {/* Top 5 Weak Device */}
-        <Box title={t["weak-device"]} className="flex-1">
+        <Box title={m["weak-device"]} className="flex-1">
           <div className="flex flex-col justify-center items-start">
             {/* columns */}
             <div className="flex flex-row justify-between w-full text-[11px] text-[#999999] mb-[15px]">
               <div className="flex justify-center w-full">
-                {t["weak-device-columns"][0]}
+                {m["weak-device-columns"][0]}
               </div>
               <div className="flex justify-center w-full">
-                {t["weak-device-columns"][1]}
+                {m["weak-device-columns"][1]}
               </div>
             </div>
             {/* data */}
@@ -126,18 +126,18 @@ export default function Home() {
         </Box>
 
         {/* Top 5 Vulnerabilities */}
-        <Box title={t["vulns"]} className="flex-1">
+        <Box title={m["vulns"]} className="flex-1">
           <div className="flex flex-col justify-center items-start">
             {/* columns */}
             <div className="flex flex-row justify-between w-full text-[11px] text-[#999999] mb-[15px]">
               <div className="flex flex-3 justify-center w-full">
-                {t["vulns-columns"][0]}
+                {m["vulns-columns"][0]}
               </div>
               <div className="flex flex-2 justify-center w-full">
-                {t["vulns-columns"][1]}
+                {m["vulns-columns"][1]}
               </div>
               <div className="flex flex-1 justify-center w-full">
-                {t["vulns-columns"][2]}
+                {m["vulns-columns"][2]}
               </div>
               <div className="flex flex-3 justify-center w-full"></div>
             </div>
@@ -147,49 +147,54 @@ export default function Home() {
               level={"critical"}
               total={52}
               value={60}
+              ratio={[3, 2, 1, 3]}
             />
             <VulnerabilitiesItem
               vulnName={"CVE-2004-2761"}
               level={"high"}
               total={40}
               value={40}
+              ratio={[3, 2, 1, 3]}
             />
             <VulnerabilitiesItem
               vulnName={"CVE-2004-2761"}
               level={"medium"}
               total={28}
               value={32}
+              ratio={[3, 2, 1, 3]}
             />
             <VulnerabilitiesItem
               vulnName={"CVE-2004-2761"}
               level={"low"}
               total={14}
               value={20}
+              ratio={[3, 2, 1, 3]}
             />
             <VulnerabilitiesItem
               vulnName={"CVE-2004-2761"}
               level={"critical"}
               total={8}
               value={5}
+              ratio={[3, 2, 1, 3]}
             />
           </div>
         </Box>
 
         {/* Top 5 Security Alerts */}
-        <Box title={t["security-alerts"]} className="flex-1">
+        <Box title={m["security-alerts"]} className="flex-1">
           <div className="flex flex-row">
             {/* table */}
             <div className="flex-6 flex flex-col justify-center items-start">
               {/* columns */}
               <div className="flex flex-row justify-between w-full text-[11px] text-[#999999] mb-[15px]">
                 <div className="flex-3 flex justify-center w-full">
-                  {t["security-alerts-columns"][0]}
+                  {m["security-alerts-columns"][0]}
                 </div>
                 <div className="flex-1 flex justify-center w-full">
-                  {t["security-alerts-columns"][1]}
+                  {m["security-alerts-columns"][1]}
                 </div>
                 <div className="flex-2 flex justify-center w-full">
-                  {t["security-alerts-columns"][2]}
+                  {m["security-alerts-columns"][2]}
                 </div>
               </div>
               {/* data */}
@@ -261,7 +266,7 @@ export default function Home() {
       <div className="flex flex-row gap-[30px]">
         {/* LIST: Security Alerts */}
         <Box
-          title={t["list-security-alerts"]}
+          title={m["list-security-alerts"]}
           className="flex flex-col gap-[10px]"
         >
           <SecurityAlertsListItem
@@ -286,7 +291,7 @@ export default function Home() {
           />
         </Box>
         {/* GRAPH: Security Alerts */}
-        <Box title={t["graph-security-alerts"]} className="min-h-[335px]">
+        <Box title={m["graph-security-alerts"]} className="min-h-[335px]">
           {""}
         </Box>
       </div>

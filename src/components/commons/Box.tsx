@@ -9,8 +9,7 @@ export default function Box({ title, className, children, ...rest }: BoxProps) {
     <div
       className={`w-full h-full bg-box-color rounded-[10px] 
         ${title ? "py-[23px] px-[20px]" : "py-[30px] px-[25px]"}  
-        ${className}`}
-      // className={`w-full h-full bg-box-color rounded-[10px] py-[30px] px-[25px] ${className}`}
+        ${className ? className : ""}`}
       {...rest}
     >
       {title && <div className="font-bold mb-[25px]">{title}</div>}

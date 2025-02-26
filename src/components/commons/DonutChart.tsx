@@ -13,6 +13,10 @@ export interface Props {
   height?: number;
   innerRadius?: number;
   outerRadius?: number;
+  startAngle?: number;
+  endAngle?: number;
+  cx?: string;
+  cy?: string;
 }
 
 export default function DonutChart({
@@ -21,6 +25,10 @@ export default function DonutChart({
   height = 120,
   innerRadius = 45,
   outerRadius = 60,
+  startAngle = 0,
+  endAngle = 360,
+  cx = "50%",
+  cy = "50%",
 }: Props) {
   return (
     <ResponsiveContainer width="100%" height="100%">
@@ -31,6 +39,10 @@ export default function DonutChart({
           innerRadius={innerRadius}
           outerRadius={outerRadius}
           stroke="none"
+          startAngle={startAngle}
+          endAngle={endAngle}
+          cx={cx}
+          cy={cy}
         >
           {data &&
             data.map((entry, index) => (

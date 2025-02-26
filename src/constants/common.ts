@@ -8,4 +8,4 @@ export const ROUTE = {
   SECURITY_ALERTS: "/security-alerts",
 };
 
-export const LEVEL = ["critical", "high", "medium", "low"] as const;
+export const LEVEL = ["critical", "high", "medium", "low", "na"] as const;

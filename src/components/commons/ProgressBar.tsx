@@ -13,7 +13,7 @@ export default function ProgressBar({ value }: Props) {
           variant="determinate"
           value={value}
           sx={{
-            height: 12, // 두께 조절
+            height: 14, // 두께 조절
             borderRadius: 6,
             background: "#1a1f2a", // 배경 그라데이션
             "& .MuiLinearProgress-bar": {

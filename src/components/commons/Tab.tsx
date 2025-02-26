@@ -8,7 +8,10 @@ interface Props {
 export default function Tab({ items, tab, setTab, className, ...rest }: Props) {
   return (
     <div
-      className={`flex flex-row gap-[30px] mt-[45px] ${className}`}
+      className={`
+        flex flex-row gap-[30px] mt-[45px] 
+        ${className ? className : ""}
+      `}
       {...rest}
     >
       {items.map((item, index) => {
@@ -16,7 +19,7 @@ export default function Tab({ items, tab, setTab, className, ...rest }: Props) {
           <div
             key={item}
             className={`
-              felx justify-center items-center min-h-[40px] font-bold cursor-pointer
+              flex justify-center items-center min-h-[40px] font-bold cursor-pointer
               ${tab === index ? "text-main-color border-main-color border-b" : ""}
             `}
             onClick={() => setTab(index)}
