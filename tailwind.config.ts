@@ -30,6 +30,7 @@ export default {
       colors: {
         background: "#030712",
         sidebar: "#0e131f",
+        "main-color": "#7856FF",
         "menu-active": "#7856FF",
         "box-color": "#0E131F",
         critical: "#f72585",

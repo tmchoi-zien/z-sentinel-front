@@ -24,7 +24,7 @@ export default function MenuItem({ menu }: MenuItemProps) {
   return (
     <div
       data-testid="menu-item"
-      className={`flex flex-row gap-[13px] items-center w-full h-[54px] p-[12px] rounded-[10px] text-[18px]
+      className={`flex flex-row gap-[13px] items-center w-full h-[54px] p-[12px] rounded-[10px] text-[18px] cursor-pointer
         ${menu.pathname === pathname ? "bg-gradient-to-r from-[rgba(120,86,255,0.5)] to-[rgba(120,86,255,0)]" : ""}`}
       onClick={() => onClickMenu(menu)}
     >

@@ -52,7 +52,7 @@ export default function Home() {
   //   </>
   // );
   return (
-    <div className="flex flex-col gap-[30px] mb-20">
+    <div className="flex flex-col gap-[30px]">
       <div className="flex flex-row gap-[30px]">
         {/* Devices */}
         <Box className="flex flex-row gap-[25px]">
@@ -286,7 +286,9 @@ export default function Home() {
           />
         </Box>
         {/* GRAPH: Security Alerts */}
-        <Box title={t["graph-security-alerts"]}>{""}</Box>
+        <Box title={t["graph-security-alerts"]} className="min-h-[335px]">
+          {""}
+        </Box>
       </div>
     </div>
   );

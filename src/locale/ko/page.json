@@ -39,6 +39,7 @@
   },
   "vulnerabilities": {
     "title": "Vulnerabilities",
+    "tab": ["Overview", "Vulnerabilities"],
     "table-columns": [
       "#",
       "IP",

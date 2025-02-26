@@ -17,10 +17,10 @@ export interface Props {
 
 export default function DonutChart({
   data,
-  width = 400,
-  height = 400,
-  innerRadius = 50,
-  outerRadius = 100,
+  width = 120,
+  height = 120,
+  innerRadius = 45,
+  outerRadius = 60,
 }: Props) {
   return (
     <ResponsiveContainer width="100%" height="100%">
