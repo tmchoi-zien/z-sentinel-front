@@ -5,7 +5,7 @@ import ChooseAlertLogic from "./logic";
 import { useEffect } from "react";
 import useModal from "../useModal";
 
-const t = TEXT["choose-alert"];
+const m = TEXT["choose-alert"];
 
 interface Props {
   data: any;
@@ -32,7 +32,7 @@ export default function ChooseAlert({ data, onClose }: Props) {
 
   return (
     <>
-      <div>{t["title"]}</div>
+      <div>{m["title"]}</div>
       <div className="flex flex-col gap-10 mt-10">
         {alerts &&
           alerts?.map((item) => {

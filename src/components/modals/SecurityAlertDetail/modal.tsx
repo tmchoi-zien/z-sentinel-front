@@ -3,7 +3,7 @@
 import * as TEXT from "@/locale/ko/modal.json";
 import SecurityAlertDetailLogic from "./logic";
 
-const t = TEXT["security-alert-detail"];
+const m = TEXT["security-alert-detail"];
 
 interface Props {
   data: any;
@@ -16,7 +16,7 @@ export default function SecurityAlertDetail({ data, onClose }: Props) {
 
   return (
     <>
-      <div>{t["title"]}</div>
+      <div>{m["title"]}</div>
       <p>{JSON.stringify(alert || "")}</p>
     </>
   );

@@ -7,7 +7,7 @@ import Table from "@/components/commons/Table";
 import useModal from "@/components/modals/useModal";
 import VulnerabilitiesLogic from "./logic";
 
-const t = TEXT["vulnerabilities"];
+const m = TEXT["vulnerabilities"];
 
 export default function Vulnerabilities() {
   const res = VulnerabilitiesLogic();
@@ -63,7 +63,7 @@ export default function Vulnerabilities() {
 
   return (
     <>
-      <h3>{t["title"]}</h3>
+      <h3>{m["title"]}</h3>
 
       {/* <Table
         getData={getAssetList}

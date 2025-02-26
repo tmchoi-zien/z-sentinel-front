@@ -5,7 +5,7 @@ import * as TEXT from "@/locale/ko/page.json";
 import HomeLogic from "./logic";
 import DragableButton from "@/components/commons/DragableButton";
 
-const t = TEXT["home"];
+const m = TEXT["home"];
 
 export default function Home() {
   const {
@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <>
-      <div>{t["title"]}</div>
+      <div>{m["title"]}</div>
       <DragableButton />
     </>
   );
