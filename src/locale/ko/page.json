@@ -1,6 +1,20 @@
 {
   "home": {
-    "title": "홈"
+    "title": "홈",
+    "devices": "Devices",
+    "connected": "Connected",
+    "disconnected": "Disconnected",
+    "level": "Security Level Assessment",
+    "high-risk-device": "High Risk Devices",
+    "tile-security-alerts": "Security Alerts",
+    "weak-device": "Top 5 Weak Device",
+    "weak-device-columns": ["Device", "Severity", "Total"],
+    "vulns": "Top 5 Vulnerabilities",
+    "vulns-columns": ["CVE ID", "Severity", "total"],
+    "security-alerts": "Top 5 Security Alerts",
+    "security-alerts-columns": ["Device", "Alerts", "Severity"],
+    "list-security-alerts": "Security Alerts",
+    "graph-security-alerts": "Security Alerts"
   },
   "devices": {
     "title": "Devices",
@@ -25,6 +39,30 @@
   },
   "vulnerabilities": {
     "title": "Vulnerabilities",
+    "tab": ["Overview", "Vulnerabilities"],
+    "high-risk-device": "High Risk Devices",
+    "vulns": "Top 5 Vulnerabilities",
+    "vulns-columns": ["CVE ID", "Severity", "Total"],
+    "vulns-by-severity": "Vulnerabilities - by Severity",
+    "critical": "Critical",
+    "high": "High",
+    "medium": "Medium",
+    "low": "Low",
+    "na": "N/A",
+    "vuln-models": "Top 5 Vulnerable Models",
+    "vuln-models-columns": ["Models", "Vulnerable Device", "Unique Vuln"],
+    "vuln-device-type": "Top 5 Vulnerable Device Types",
+    "vuln-device-type-columns": [
+      "Device Type",
+      "Vulnerable Device",
+      "Unique Vuln"
+    ],
+    "vuln-manufacturer": "Top 5 Vulnerable Manufacturers",
+    "vuln-manufacturer-columns": [
+      "Manufacturer",
+      "Vulnerable Device",
+      "Unique Vuln"
+    ],
     "table-columns": [
       "#",
       "IP",

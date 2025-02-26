@@ -1,11 +1,12 @@
 "use client";
-import { useMemo } from "react";
-import { type MRT_ColumnDef } from "material-react-table";
+import { useState } from "react";
 
 import * as TEXT from "@/locale/ko/page.json";
-import Table from "@/components/commons/Table";
-import useModal from "@/components/modals/useModal";
 import VulnerabilitiesLogic from "./logic";
+
+import Tab from "@/components/commons/Tab";
+import useModal from "@/components/modals/useModal";
+import Overview from "./Overview";
 
 const m = TEXT["vulnerabilities"];
 
@@ -13,65 +14,14 @@ export default function Vulnerabilities() {
   const res = VulnerabilitiesLogic();
   const { openVulnerabilityDetail } = useModal();
 
-  // const columns = useMemo<MRT_ColumnDef<AssetType>[]>(
-  //   () => [
-  //     {
-  //       size: 80,
-  //       header: t["table-columns"][0],
-  //       accessorFn: (row) => `${row.idx}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //     {
-  //       size: 150,
-  //       header: t["table-columns"][1],
-  //       accessorFn: (row) => `${row.year}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //     {
-  //       size: 150,
-  //       header: t["table-columns"][2],
-  //       accessorFn: (row) => `${row.workType}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //     {
-  //       size: 200,
-  //       header: t["table-columns"][3],
-  //       accessorFn: (row) => `${row.name}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //     {
-  //       size: 150,
-  //       header: t["table-columns"][4],
-  //       accessorFn: (row) => `${row.sso1Name}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //     {
-  //       size: 150,
-  //       header: t["table-columns"][5],
-  //       accessorFn: (row) => `${row.openDay}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //     {
-  //       size: 150,
-  //       header: t["table-columns"][6],
-  //       accessorFn: (row) => `${row.status}`,
-  //       Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
-  //     },
-  //   ],
-  //   [],
-  // );
+  const [tab, setTab] = useState<number>(0);
 
   return (
-    <>
-      <h3>{m["title"]}</h3>
+    <div className="flex flex-col gap-[30px]">
+      <Tab items={m["tab"]} tab={tab} setTab={setTab} />
 
-      {/* <Table
-        getData={getAssetList}
-        columns={columns}
-        onRowClick={(row) => {
-          openVulnerabilityDetail({ index: row.index, onClose: () => {} });
-        }}
-      /> */}
-    </>
+      {/* TAB: Overview */}
+      {tab === 0 && <Overview />}
+    </div>
   );
 }

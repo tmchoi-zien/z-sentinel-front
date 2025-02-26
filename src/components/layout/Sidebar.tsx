@@ -5,6 +5,7 @@ import { MENUS, MenusType } from "@/constants/menu";
 import MenuItem from "./MenuItem";
 import Button from "../commons/Button";
 import useModal from "../modals/useModal";
+import ZienIocn from "../icons/ZienIcon";
 
 /**
  * todo: 하위항목 펼치기/접기 애니메이션 추가할 것
@@ -18,11 +19,13 @@ export default function Sidebar() {
   return (
     <div
       data-testid="side-bar"
-      className="w-[250px] h-full bg-sidebar text-white"
+      className="w-[280px] h-full bg-sidebar py-[20px] px-[20px]"
     >
-      <div className="w-full h-full bg-sidebar-pattern flex flex-col items-center p-5">
-        <div className="w-full text-2xl text-center pb-10">Z-ONE 2.0</div>
-        <div className="w-full flex flex-col items-center px-2">
+      <div className="flex flex-col items-center gap-[26px] w-full h-full">
+        <div className="flex items-center justify-center py-[20px]">
+          <ZienIocn />
+        </div>
+        <div className="w-full flex flex-col items-center gap-[20px]">
           {menus &&
             menus.map((menu, idx) => {
               return <MenuItem menu={menu} key={idx} />;
@@ -30,8 +33,6 @@ export default function Sidebar() {
           <ul className="flex flex-col gap-5 mt-10">
             <li>
               <Button
-                color="white"
-                size="m"
                 text="modal - vulnerability detail"
                 type="button"
                 onClick={() =>
@@ -41,8 +42,6 @@ export default function Sidebar() {
             </li>
             <li>
               <Button
-                color="white"
-                size="m"
                 text="modal - vulnerability detail"
                 type="button"
                 onClick={() =>

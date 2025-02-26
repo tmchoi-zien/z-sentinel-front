@@ -1,6 +1,5 @@
 "use client";
 import { useState } from "react";
-import Image from "next/image";
 import { useRouter, usePathname } from "next/navigation";
 
 import { MenusType } from "@/constants/menu";
@@ -25,54 +24,12 @@ export default function MenuItem({ menu }: MenuItemProps) {
   return (
     <div
       data-testid="menu-item"
-      className="w-full flex flex-col items-start py-1"
+      className={`flex flex-row gap-[13px] items-center w-full h-[54px] p-[12px] rounded-[10px] text-[18px] cursor-pointer
+        ${menu.pathname === pathname ? "bg-gradient-to-r from-[rgba(120,86,255,0.5)] to-[rgba(120,86,255,0)]" : ""}`}
+      onClick={() => onClickMenu(menu)}
     >
-      <div className="w-full flex items-center">
-        <div
-          className={`flex w-full items-center justify-between py-1 px-2 rounded-md cursor-pointer
-            ${menu.pathname === pathname ? "bg-menu-active" : ""} 
-            ${menu.pathname !== pathname ? "opacity-50" : ""}
-          `}
-          onClick={() => onClickMenu(menu)}
-        >
-          <div className="flex w-full gap-1 items-center">
-            {menu.icon && (
-              <span>
-                <Image src={menu.icon} alt="home" width="16" height="16" />
-              </span>
-            )}
-            {menu.title}
-          </div>
-          {menu.childrens && (
-            <div onClick={() => setShowChildren(showChildren)}>
-              <Image
-                src={`${
-                  showChildren ? "/icons/arrow_up.svg" : "/icons/arrow_down.svg"
-                }`}
-                alt="up"
-                width="12"
-                height="12"
-              />
-            </div>
-          )}
-        </div>
-      </div>
-      {showChildren &&
-        menu.childrens &&
-        menu.childrens.map((subMenu, idx) => {
-          return (
-            <div
-              key={idx}
-              className={`w-full pl-8 py-1 cursor-pointer rounded-md
-                ${subMenu.pathname === pathname ? "bg-menu-active" : ""} 
-                ${subMenu.pathname !== pathname ? "opacity-50" : ""}
-              `}
-              onClick={() => onClickMenu(subMenu)}
-            >
-              {subMenu.title}
-            </div>
-          );
-        })}
+      {menu.icon && <menu.icon active={menu.pathname === pathname} />}
+      {menu.title}
     </div>
   );
 }
