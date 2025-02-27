@@ -71,8 +71,6 @@ export default function homeDto({
         name: item.name,
         sourceIp: item.sourceIp,
         destinationIp: item.destinationIp,
-        // sourceInfo: `${item.sourceIp}:${item.sourcePort}`,
-        // destinationInfo: `${item.destinationIp}:${item.destinationPort}`,
         created: format(new Date(item.created), "yyyy.MM.dd"),
       })),
   };

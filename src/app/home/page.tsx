@@ -1,10 +1,9 @@
 "use client";
-import { useEffect } from "react";
-
 import * as TEXT from "@/locale/ko/page.json";
 import HomeLogic from "./logic";
-import DragableButton from "@/components/commons/DragableButton";
+import HomeSkeleton from "../../components/skeletons/HomeSkeleton";
 
+import { LEVEL } from "@/constants/common";
 import Box from "@/components/commons/Box";
 import AtomIcon from "@/components/icons/AtomIcon";
 import RiskIcon from "@/components/icons/RiskIcon";
@@ -15,11 +14,13 @@ import WeakDeviceItem from "@/components/commons/WeakDeviceItem";
 import SecurityAlertsItem from "@/components/commons/SecurityAlertsItem";
 import VulnerabilitiesItem from "@/components/commons/VulnerabilitiesItem";
 import SecurityAlertsListItem from "@/components/commons/SecurityAlertsListItem";
-import { LEVEL } from "@/constants/common";
 
 const m = TEXT["home"];
 
 export default function Home() {
+  const data = HomeLogic();
+  if (!data) return <HomeSkeleton />;
+
   const {
     devices,
     level,
@@ -29,24 +30,7 @@ export default function Home() {
     vulns,
     securityAlerts,
     alerts,
-    isLoading,
-    error,
-  } = HomeLogic();
-
-  useEffect(() => {
-    if (!isLoading) {
-      console.log("devices::", devices);
-      console.log("level::", level);
-      console.log("high risk devices::", highRiskDevices);
-      console.log("alerts this week::", alertsThisWeek);
-      console.log("weak devices::", weakDevices);
-      console.log("vulns::", vulns);
-      console.log("security alerts::", securityAlerts);
-      console.log("alerts::", alerts);
-    }
-  }, [isLoading]);
-
-  if (isLoading) return <>Loading...</>;
+  } = data;
 
   return (
     <div className="flex flex-col gap-[30px]">
