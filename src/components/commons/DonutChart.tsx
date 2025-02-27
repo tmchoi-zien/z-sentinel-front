@@ -1,13 +1,13 @@
 import React from "react";
 import { PieChart, Pie, Tooltip, ResponsiveContainer, Cell } from "recharts";
 
-const COLORS = ["#f72585", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ["#FFC300", "#F72585", "#4CC9F0", "#68DF47", "#005F73"];
 
 export interface Props {
   data: {
     name: string;
     value: number;
-    color: string;
+    color?: string;
   }[];
   width?: number;
   height?: number;
@@ -48,8 +48,7 @@ export default function DonutChart({
             data.map((entry, index) => (
               <Cell
                 key={`cell-${index}`}
-                fill={entry.color}
-                // fill={COLORS[index % COLORS.length]}
+                fill={entry.color ? entry.color : COLORS[index]}
               />
             ))}
         </Pie>

@@ -22,6 +22,7 @@ import {
 } from "@/types/api";
 
 import { getErrorMessage } from "@/utils";
+import homeDto from "@/dto/homeDto";
 
 export default function HomeLogic() {
   const [week, setWeek] = useState<string>("this");
@@ -107,7 +108,7 @@ export default function HomeLogic() {
 
   // Security alerts graph
 
-  return {
+  const dtoData = homeDto({
     devices: devices?.data || [],
     level: level?.data || [],
     highRiskDevices: highRiskDevices?.data || [],
@@ -116,6 +117,10 @@ export default function HomeLogic() {
     vulns: vulns?.data || [],
     securityAlerts: securityAlerts?.data || [],
     alerts: alerts?.data || [],
+  });
+
+  return {
+    ...dtoData,
     isLoading:
       devicesLoading ||
       levelLoading ||

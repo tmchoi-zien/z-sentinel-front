@@ -22,8 +22,15 @@ export interface HomeDeviceType {
   macAddress: string;
   manufacturer: string;
   type: string;
-  model: string;
-  description: string;
+  model?: string;
+  description: any;
+  isConnected: boolean;
+  firmwareVersion?: string;
+  os?: string;
+  osCpe?: string;
+  osFamily?: string;
+  adminPage?: string;
+  vnc?: string;
   createdBy: any;
   scan: number;
 }
@@ -95,12 +102,15 @@ export interface HomeAlertType {
   modified: string;
   name: string;
   priority: number;
-  severity: string;
-  cvss: number;
+  severity: any;
+  cvss: any;
   sourceIp: string;
   sourcePort: number;
   destinationIp: string;
   destinationPort: number;
+  protocol: string;
+  detectedRule: string;
+  description: string;
   createdBy: any;
   device: number;
 }
