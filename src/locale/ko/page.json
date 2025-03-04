@@ -64,11 +64,12 @@
       "Unique Vuln"
     ],
     "table-columns": [
-      "#",
+      "No",
       "IP",
       "Type",
       "Vulnerable Target",
-      "위험도",
+      "Vulnerability",
+      "Severity",
       "CVSS",
       "Description"
     ]

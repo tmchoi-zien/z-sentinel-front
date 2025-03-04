@@ -6,6 +6,7 @@ import * as TEXT from "@/locale/ko/page.json";
 import Tab from "@/components/commons/Tab";
 import TabOverView from "./TabOverview";
 import VulnsOverviewSkeleton from "@/components/skeletons/VulnsOverviewSkeleton";
+import TabVulnerabilities from "./TabVulnerabilities";
 
 const m = TEXT["vulnerabilities"];
 
@@ -24,7 +25,7 @@ export default function Vulnerabilities() {
       )}
       {tab === 1 && (
         <Suspense fallback={<>Vulnerabilities loading...</>}>
-          <Vulnerabilities />
+          <TabVulnerabilities />
         </Suspense>
       )}
     </div>
