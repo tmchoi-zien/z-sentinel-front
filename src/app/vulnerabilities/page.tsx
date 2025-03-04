@@ -1,19 +1,15 @@
 "use client";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 import * as TEXT from "@/locale/ko/page.json";
-import VulnerabilitiesLogic from "./logic";
 
 import Tab from "@/components/commons/Tab";
-import useModal from "@/components/modals/useModal";
-import Overview from "./Overview";
+import TabOverView from "./TabOverview";
+import VulnsOverviewSkeleton from "@/components/skeletons/VulnsOverviewSkeleton";
 
 const m = TEXT["vulnerabilities"];
 
 export default function Vulnerabilities() {
-  const res = VulnerabilitiesLogic();
-  const { openVulnerabilityDetail } = useModal();
-
   const [tab, setTab] = useState<number>(0);
 
   return (
@@ -21,7 +17,16 @@ export default function Vulnerabilities() {
       <Tab items={m["tab"]} tab={tab} setTab={setTab} />
 
       {/* TAB: Overview */}
-      {tab === 0 && <Overview />}
+      {tab === 0 && (
+        <Suspense fallback={<VulnsOverviewSkeleton />}>
+          <TabOverView />
+        </Suspense>
+      )}
+      {tab === 1 && (
+        <Suspense fallback={<>Vulnerabilities loading...</>}>
+          <Vulnerabilities />
+        </Suspense>
+      )}
     </div>
   );
 }

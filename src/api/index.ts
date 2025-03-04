@@ -53,11 +53,6 @@ export async function getHomeScans() {
   return response.data;
 }
 
-export async function getHomeDevicesHighRisk() {
-  const response = await axios.get(`${BASE_URL}/api/devices-high-risk`);
-  return response.data;
-}
-
 export async function getHomeAlerts(params?: any) {
   const response = await axios.get(`${BASE_URL}/api/alerts`, {
     params,
@@ -69,11 +64,6 @@ export async function getHomeWeakDevices() {
   const response = await axios.get(
     `${BASE_URL}/api/devices-vulnerability-category`,
   );
-  return response.data;
-}
-
-export async function getHomeVulns() {
-  const response = await axios.get(`${BASE_URL}/api/vulnerabilities-top5`);
   return response.data;
 }
 
@@ -91,8 +81,8 @@ export async function getHomeAlertsGraph() {
  * Devices
  */
 
-export async function getDevices() {
-  const response = await axios.get(`${BASE_URL}/api/devices`);
+export async function getDevices(params: any) {
+  const response = await axios.get(`${BASE_URL}/api/devices`, params);
   return response.data;
 }
 
@@ -103,6 +93,19 @@ export async function getDevices() {
 /**
  * Vulnerabilities
  */
+
+export async function getVulns() {
+  const response = await axios.get(`${BASE_URL}/api/vulnerabilities`);
+  return response.data;
+}
+
+export async function getVulnsGroupByRisk() {
+  const response = await axios.get(
+    `${BASE_URL}/api/vulnerabilities-group-by-risk`,
+  );
+  return response.data;
+}
+
 /**
  * Security-alerts
  */
@@ -118,5 +121,21 @@ export async function getSecurityAlertsGraph() {
 
 export async function getAlert(id: number) {
   const response = await axios.get(`${BASE_URL}/api/alerts/${id}`);
+  return response.data;
+}
+
+/**
+ * Common
+ */
+
+export async function getDevicesHighRisk() {
+  const response = await axios.get(`${BASE_URL}/api/devices-high-risk`);
+  return response.data;
+}
+
+export async function getVulnsTop5(params: any) {
+  const response = await axios.get(`${BASE_URL}/api/vulnerabilities-top5`, {
+    params,
+  });
   return response.data;
 }

@@ -4,10 +4,10 @@ import { useQueries } from "react-query";
 import {
   getHomeAlerts,
   getHomeDevices,
-  getHomeDevicesHighRisk,
+  getDevicesHighRisk,
   getHomeScans,
   getHomeSecurityAlerts,
-  getHomeVulns,
+  getVulnsTop5,
   getHomeWeakDevices,
 } from "@/api";
 import {
@@ -41,7 +41,7 @@ export default function HomeLogic() {
     // High risk devices API
     {
       queryKey: [`home-high-risk-devices`],
-      queryFn: getHomeDevicesHighRisk,
+      queryFn: getDevicesHighRisk,
       suspense: true,
     },
     // Security alerts
@@ -57,7 +57,7 @@ export default function HomeLogic() {
       suspense: true,
     },
     // Top5 - Vulnerabilities
-    { queryKey: [`home-vulns`], queryFn: getHomeVulns, suspense: true },
+    { queryKey: [`home-vulns`], queryFn: getVulnsTop5, suspense: true },
     // Top5 - Security alerts
     {
       queryKey: [`home-security-alerts`],

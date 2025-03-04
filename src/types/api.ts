@@ -123,9 +123,96 @@ export interface HomeGraphType {
 /**
  * Devices
  */
+
+export interface DeviceType {
+  id: number;
+  created: string;
+  modified: string;
+  ip: string;
+  macAddress: string;
+  manufacturer: string;
+  type: string;
+  model?: string;
+  description: any;
+  isConnected: boolean;
+  firmwareVersion?: string;
+  os?: string;
+  osCpe?: string;
+  osFamily?: string;
+  adminPage?: string;
+  vnc?: string;
+  createdBy: any;
+  scan: number;
+}
+
 /**
  * Vulnerabilities
  */
+
+export interface VulnerabilitiesType {
+  id: number;
+  created: string;
+  modified: string;
+  target: string;
+  name: string;
+  risk: string;
+  cvss: number;
+  description: string;
+  createdBy: any;
+  device: number;
+}
+
+export interface VulnsHighRiskType {
+  id: number;
+  vulnerabilityCategory: string;
+  created: string;
+  modified: string;
+  ip: string;
+  macAddress: string;
+  manufacturer: string;
+  type: string;
+  model: string;
+  description: any;
+  isConnected: boolean;
+  firmwareVersion: string;
+  os?: string;
+  osCpe?: string;
+  osFamily?: string;
+  adminPage?: string;
+  vnc: any;
+  createdBy: any;
+  scan: number;
+}
+
+export interface VulnsGroupByRiskType {
+  risk: string;
+  count: number;
+}
+
+export interface VulnsTop5Type {
+  name: string;
+  risk: string;
+  count: number;
+}
+
+export interface VulnsTop5ByModelType {
+  device_Model: string;
+  count: number;
+  deviceCount: number;
+}
+
+export interface VulnsTop5ByTypeType {
+  device_Type: string;
+  count: number;
+  deviceCount: number;
+}
+
+export interface VulnsTop5ByManufacturerType {
+  device_Manufacturer: string;
+  count: number;
+  deviceCount: number;
+}
+
 /**
  * Security alerts
  */

@@ -8,7 +8,7 @@ interface Props {
   total: number;
   value: number;
   ratio: number[];
-  minHeight?: number;
+  className?: string;
 }
 
 export default function VulnerabilitiesItem({
@@ -17,17 +17,13 @@ export default function VulnerabilitiesItem({
   total,
   value,
   ratio,
-  minHeight = 36,
+  className,
 }: Props) {
   const flexRatio = ratio.map((item) => `flex-${item}`);
-  const minY = `min-h-[${minHeight}px]`;
 
   return (
     <div
-      className={`
-      flex flex-row items-center justify-between w-full text-xs
-      ${minY}
-    `}
+      className={`flex flex-row items-center justify-between w-full text-xs ${className}`}
     >
       <div className={`${flexRatio[0]} flex justify-center`}>{vulnName}</div>
       <div className={`${flexRatio[1]} flex justify-center`}>

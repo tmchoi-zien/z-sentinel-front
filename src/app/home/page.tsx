@@ -133,6 +133,7 @@ export default function Home() {
                 total={item.count}
                 value={item.count}
                 ratio={[3, 2, 1, 3]}
+                className={"min-h-[36px]"}
               />
             ))}
           </div>
