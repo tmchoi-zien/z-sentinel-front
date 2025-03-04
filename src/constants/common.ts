@@ -11,10 +11,10 @@ export const ROUTE = {
 export const LEVEL = ["critical", "high", "medium", "low", "na"] as const;
 
 export const COLOR_BY_LEVEL = {
-  critical: "#f72585",
-  high: "#7209B7",
-  medium: "#3470EC",
-  low: "#00B4D8",
+  critical: "#FA3D3D",
+  high: "#FF7728",
+  medium: "#FFC300",
+  low: "#00AF81",
   na: "white",
 };
 
