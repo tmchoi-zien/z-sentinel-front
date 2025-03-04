@@ -106,6 +106,13 @@ export async function getVulnsGroupByRisk() {
   return response.data;
 }
 
+export async function getVuln(params: any) {
+  const response = await axios.get(`${BASE_URL}/api/cves`, {
+    params,
+  });
+  return response.data;
+}
+
 /**
  * Security-alerts
  */

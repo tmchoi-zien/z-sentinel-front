@@ -3,7 +3,17 @@
     "title": "Security alert detail"
   },
   "vulnerability-detail": {
-    "title": "Vulnerability detail"
+    "title": "Vulnerability detail",
+    "published": "Published",
+    "cwe": "CWE",
+    "description": "Description",
+    "severity": "Severity",
+    "cvss": "CVSS Version 2",
+    "base-score": "Base Score",
+    "exploitability-score": "Exploitability Score",
+    "impact-score": "Impact Score",
+    "product-affected": "Product affected",
+    "more": "More"
   },
   "choose-alert": {
     "title": "Choose alert"

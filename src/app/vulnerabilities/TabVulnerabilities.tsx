@@ -86,7 +86,7 @@ export default function TabVulnerabilities({}: Props) {
         columns={columns}
         onRowClick={(row) => {
           openVulnerabilityDetail({
-            vulnId: row.id,
+            cveName: row.name,
             onClose: () => {},
           });
         }}

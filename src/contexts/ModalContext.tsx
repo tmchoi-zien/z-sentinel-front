@@ -8,6 +8,7 @@ import {
   ComponentType,
   useContext,
   useEffect,
+  Suspense,
 } from "react";
 import Modal, { SizeType } from "@/components/modals/Modal";
 
@@ -16,6 +17,7 @@ export interface openModalProps {
     size: SizeType;
     children: ComponentType<any>;
     data?: any;
+    fallback?: ReactNode;
   };
   onClose?: (res: any) => void;
 }
@@ -27,6 +29,7 @@ export interface ModalType {
   open: boolean;
   data?: any;
   onClose?: (data: any) => void;
+  fallback?: ReactNode;
 }
 
 export interface ModalContextProps {
@@ -47,10 +50,6 @@ export const ModalContext =
 export const ModalProvider = ({ children }: { children: ReactNode }) => {
   const [modals, setModals] = useState<ModalType[]>([]);
 
-  useEffect(() => {
-    console.log("modals", modals);
-  }, [modals]);
-
   const openModal = useCallback(
     ({ options, onClose }: openModalProps) => {
       const newModal: ModalType = {
@@ -61,6 +60,7 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
         // id: modals.length,
         data: options.data,
         onClose,
+        fallback: options.fallback,
       };
       setModals((prev) => {
         return [...prev, newModal];
@@ -90,12 +90,14 @@ export const ModalProvider = ({ children }: { children: ReactNode }) => {
         return (
           <Fragment key={idx}>
             {modal.open && (
-              <Modal size={modal.size} onClose={() => closeModal(modal.id)}>
-                <modal.children
-                  data={modal.data}
-                  onClose={(res: any) => closeModal(modal.id, res)}
-                />
-              </Modal>
+              <Suspense fallback={modal.fallback}>
+                <Modal size={modal.size} onClose={() => closeModal(modal.id)}>
+                  <modal.children
+                    data={modal.data}
+                    onClose={(res: any) => closeModal(modal.id, res)}
+                  />
+                </Modal>
+              </Suspense>
             )}
           </Fragment>
         );

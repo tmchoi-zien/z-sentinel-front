@@ -3,6 +3,7 @@ import { useContext } from "react";
 import VulnerabilityDetail from "./VulnerabilityDetail/modal";
 import SecurityAlertDetail from "./SecurityAlertDetail/modal";
 import ChooseAlert from "./ChooseAlert/modal";
+import VulnsDetailSkeleton from "../skeletons/VulnsDetailSkeleton";
 // import AddressBook from "./Sample/modal";
 
 export default function useModal() {
@@ -13,17 +14,18 @@ export default function useModal() {
   const { openModal } = context;
 
   const openVulnerabilityDetail = ({
-    vulnId,
+    cveName,
     onClose,
   }: {
-    vulnId: number;
+    cveName: string;
     onClose: (res: any) => void;
   }) => {
     openModal({
       options: {
         size: "md",
         children: VulnerabilityDetail,
-        data: { vulnId },
+        data: { cveName },
+        fallback: <VulnsDetailSkeleton />,
       },
       onClose,
     });
@@ -41,6 +43,7 @@ export default function useModal() {
         size: "md",
         children: SecurityAlertDetail,
         data: { alertId },
+        fallback: <></>,
       },
       onClose,
     });

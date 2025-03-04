@@ -213,6 +213,23 @@ export interface VulnsTop5ByManufacturerType {
   deviceCount: number;
 }
 
+export interface VulnDetailType {
+  id: number;
+  name: string;
+  description: string;
+  cvss: {
+    vector: string;
+    baseScore: number;
+    impactScore: number;
+    exploitabilityScore: number;
+  };
+  cwe: string[];
+  affectedProducts: any[];
+  references: any[];
+  publishedDate: string;
+  lastModifiedDate: string;
+}
+
 /**
  * Security alerts
  */
