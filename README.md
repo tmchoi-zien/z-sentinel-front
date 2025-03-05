@@ -1,4 +1,4 @@
-# BASIC template
+# Z-Sentinel Web App
 
 # \* 요구사항
 
