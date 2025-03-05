@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 import {
-  HomeAlertType,
+  AlertType,
   HomeDeviceType,
   HomeHighRiskDevcieType,
   HomeLevelType,
@@ -14,11 +14,11 @@ interface Props {
   devices: HomeDeviceType[];
   level: HomeLevelType[];
   highRiskDevices: HomeHighRiskDevcieType[];
-  alertsThisWeek: HomeAlertType[];
+  alertsThisWeek: AlertType[];
   weakDevices: HomeWeakDeviceType[];
   vulns: HomeVulnsType[];
   securityAlerts: HomeSecurityAlertType[];
-  alerts: HomeAlertType[];
+  alerts: AlertType[];
 }
 export default function homeDto({
   devices,

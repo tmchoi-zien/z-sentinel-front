@@ -8,7 +8,7 @@ import {
 
 import TEST from "@/locale/ko/test-id.json";
 import TEXT from "@/locale/ko/page.json";
-import SecurityAlertsLogic from "./logic";
+import { SecurityAlertsLogic } from "./logic";
 import SecurityAlerts from "./page";
 import Provider from "@/components/Provider";
 import { ROUTE } from "@/constants/common";

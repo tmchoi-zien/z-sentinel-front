@@ -31,14 +31,14 @@
     "online": "Online",
     "offline": "Offline",
     "table-columns": [
-      "#",
-      "Detected Rule",
-      "Date",
+      "No",
       "Priority",
+      "Detected Rule",
       "Src IP",
       "Src Port",
       "Dst IP",
-      "Dst Port"
+      "Dst Port",
+      "Date"
     ]
   },
   "vulnerabilities": {

@@ -53,13 +53,6 @@ export async function getHomeScans() {
   return response.data;
 }
 
-export async function getHomeAlerts(params?: any) {
-  const response = await axios.get(`${BASE_URL}/api/alerts`, {
-    params,
-  });
-  return response.data;
-}
-
 export async function getHomeWeakDevices() {
   const response = await axios.get(
     `${BASE_URL}/api/devices-vulnerability-category`,
@@ -144,5 +137,12 @@ export async function getVulnsTop5(params: any) {
 
 export async function getAlertsGraph() {
   const response = await axios.get(`${BASE_URL}/api/alert-graph`);
+  return response.data;
+}
+
+export async function getAlerts(params?: any) {
+  const response = await axios.get(`${BASE_URL}/api/alerts`, {
+    params,
+  });
   return response.data;
 }

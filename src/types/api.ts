@@ -96,7 +96,7 @@ export interface HomeSecurityAlertType {
   scan: number;
 }
 
-export interface HomeAlertType {
+export interface AlertType {
   id: number;
   created: string;
   modified: string;

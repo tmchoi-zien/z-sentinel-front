@@ -2,36 +2,28 @@
 import { useQueries } from "react-query";
 
 import {
-  getHomeAlerts,
-  getHomeDevices,
-  getDevicesHighRisk,
+  getAlerts,
   getHomeScans,
-  getHomeSecurityAlerts,
   getVulnsTop5,
+  getHomeDevices,
   getHomeWeakDevices,
+  getDevicesHighRisk,
+  getHomeSecurityAlerts,
 } from "@/api";
 import {
-  HomeAlertType,
-  HomeDeviceType,
-  HomeHighRiskDevcieType,
+  AlertType,
   HomeLevelType,
-  HomeSecurityAlertType,
   HomeVulnsType,
+  HomeDeviceType,
   HomeWeakDeviceType,
+  HomeSecurityAlertType,
+  HomeHighRiskDevcieType,
 } from "@/types/api";
 
 import homeDto from "@/dto/homeDto";
 
 export default function HomeLogic() {
-  // const [week, setWeek] = useState<string>("this");
   const week = "this" as const;
-
-  async function fetchData() {
-    await new Promise((resolve) => setTimeout(resolve, 2000)); // ⏳ 2초 딜레이
-    return fetch("https://jsonplaceholder.typicode.com/todos/1").then((res) =>
-      res.json(),
-    );
-  }
 
   const queries = useQueries([
     // 디바이스 API
@@ -47,7 +39,7 @@ export default function HomeLogic() {
     // Security alerts
     {
       queryKey: [`home-alerts-this-week`, week],
-      queryFn: () => getHomeAlerts({ week }),
+      queryFn: () => getAlerts({ week }),
       suspense: true,
     },
     // Top5 - Week deivces
@@ -65,7 +57,7 @@ export default function HomeLogic() {
       suspense: true,
     },
     // Security alerts list
-    { queryKey: [`home-alerts`], queryFn: getHomeAlerts, suspense: true },
+    { queryKey: [`home-alerts`], queryFn: getAlerts, suspense: true },
     // Security alerts graph
   ]);
 
@@ -77,11 +69,11 @@ export default function HomeLogic() {
         devices: queries[0].data?.data as HomeDeviceType[],
         level: queries[1].data?.data as HomeLevelType[],
         highRiskDevices: queries[2].data?.data as HomeHighRiskDevcieType[],
-        alertsThisWeek: queries[3].data?.data as HomeAlertType[],
+        alertsThisWeek: queries[3].data?.data as AlertType[],
         weakDevices: queries[4].data?.data as HomeWeakDeviceType[],
         vulns: queries[5].data?.data as HomeVulnsType[],
         securityAlerts: queries[6].data?.data as HomeSecurityAlertType[],
-        alerts: queries[7].data?.data as HomeAlertType[],
+        alerts: queries[7].data?.data as AlertType[],
       });
 
   return dtoData;
