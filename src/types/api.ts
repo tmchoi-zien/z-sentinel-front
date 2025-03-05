@@ -151,6 +151,8 @@ export interface DeviceType {
 
 export interface VulnerabilitiesType {
   id: number;
+  ip: string;
+  type: string;
   created: string;
   modified: string;
   target: string;
@@ -233,3 +235,21 @@ export interface VulnDetailType {
 /**
  * Security alerts
  */
+
+export interface AlertsGraphType {
+  nodes: NodeType[];
+  edges: EdgeType[];
+}
+
+export interface NodeType {
+  id: number;
+  label: string;
+  type: string;
+  ip: string;
+  isConnected: boolean;
+}
+
+export interface EdgeType {
+  fronm: number;
+  to: number;
+}

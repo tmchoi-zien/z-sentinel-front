@@ -28,13 +28,13 @@ export default function TabVulnerabilities({}: Props) {
       {
         size: 150,
         header: m["table-columns"][1],
-        accessorFn: (row) => `${row.device}`,
+        accessorFn: (row) => `${row.ip}`,
         Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
       },
       {
         size: 150,
         header: m["table-columns"][2],
-        accessorFn: (row) => `${row.device}`,
+        accessorFn: (row) => `${row.type}`,
         Cell: ({ renderedCellValue }) => <>{renderedCellValue}</>,
       },
       {

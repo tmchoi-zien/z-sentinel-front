@@ -25,3 +25,12 @@ export const COLOR_BY_RANK = {
   top4: "#1ED6FF",
   top5: "#3DFFDC",
 };
+
+export const DEVICE_TYPE = {
+  ROUTER: "Router",
+  NVR: "NVR",
+  CAMERA: "Camera",
+  TV: "TV",
+  PC: "PC",
+  MODEM: "Modem",
+};

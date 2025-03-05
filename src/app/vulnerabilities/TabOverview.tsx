@@ -189,8 +189,8 @@ export default function TabOverView({}: Props) {
                   <VulnerableRowItem
                     key={index}
                     modelName={item.deviceModel}
-                    vulnerableDevice={item.count}
-                    uniqueVuln={item.deviceCount}
+                    vulnerableDevice={item.deviceCount}
+                    uniqueVuln={item.count}
                     rank={`top${index + 1}` as keyof typeof COLOR_BY_RANK}
                     ratio={[2, 1, 1]}
                   />
@@ -206,7 +206,7 @@ export default function TabOverView({}: Props) {
                 outerRadius={60}
                 data={vulnsTop5ByModel.map((item, index) => ({
                   name: item.deviceModel,
-                  value: item.deviceCount,
+                  value: item.count,
                   color:
                     COLOR_BY_RANK[
                       `top${index + 1}` as keyof typeof COLOR_BY_RANK
@@ -240,8 +240,8 @@ export default function TabOverView({}: Props) {
                   <VulnerableRowItem
                     key={index}
                     modelName={item.deviceType}
-                    vulnerableDevice={item.count}
-                    uniqueVuln={item.deviceCount}
+                    vulnerableDevice={item.deviceCount}
+                    uniqueVuln={item.count}
                     rank={`top${index + 1}` as keyof typeof COLOR_BY_RANK}
                     ratio={[2, 1, 1]}
                   />
@@ -257,7 +257,7 @@ export default function TabOverView({}: Props) {
                 outerRadius={60}
                 data={vulnsTop5ByType.map((item, index) => ({
                   name: item.deviceType,
-                  value: item.deviceCount,
+                  value: item.count,
                   color:
                     COLOR_BY_RANK[
                       `top${index + 1}` as keyof typeof COLOR_BY_RANK
@@ -291,8 +291,8 @@ export default function TabOverView({}: Props) {
                   <VulnerableRowItem
                     key={index}
                     modelName={item.deviceManufacturer}
-                    vulnerableDevice={item.count}
-                    uniqueVuln={item.deviceCount}
+                    vulnerableDevice={item.deviceCount}
+                    uniqueVuln={item.count}
                     rank={`top${index + 1}` as keyof typeof COLOR_BY_RANK}
                     ratio={[2, 1, 1]}
                   />
@@ -308,7 +308,7 @@ export default function TabOverView({}: Props) {
                 outerRadius={60}
                 data={vulnsTop5ByManufacturer.map((item, index) => ({
                   name: item.deviceManufacturer,
-                  value: item.deviceCount,
+                  value: item.count,
                   color:
                     COLOR_BY_RANK[
                       `top${index + 1}` as keyof typeof COLOR_BY_RANK

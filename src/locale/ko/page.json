@@ -26,6 +26,10 @@
   },
   "security-alerts": {
     "title": "Security Alerts",
+    "tab": ["Graph", "Security Alerts"],
+    "legend": ["IP 카메라", "공유기", "TV", "PC", "VNR", "라우터"],
+    "online": "Online",
+    "offline": "Offline",
     "table-columns": [
       "#",
       "Detected Rule",
